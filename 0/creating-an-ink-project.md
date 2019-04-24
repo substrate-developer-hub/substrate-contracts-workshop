@@ -31,6 +31,8 @@ flipper
 +-- .gitignore
 ```
 
+The Wasm Build Script is described in section ![Building Your Contract](./building-your-contract.md).
+
 ## Contract Source Code
 
 The ink CLI automatically generates the source code for the "Flipper" contract, which is about the most simple "smart" contract you can build. You can take a sneak peak as to what will come by looking at the source code here:

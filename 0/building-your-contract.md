@@ -17,7 +17,7 @@ wasm-opt -Oz target/$PROJNAME.wasm -o target/$PROJNAME-opt.wasm &&
 wasm-prune --exports call,deploy target/$PROJNAME-opt.wasm target/$PROJNAME-pruned.wasm
 ```
 
-This file will be used to compile your contract source code to WASM. You can see that it depends on the Wasm utilities we installed earlier.
+This file will be used to compile your contract source code to WASM. You can see that it depends on the Wasm utilities we installed earlier. You can find out more about each command in the Terminology section below.
 
 To compile the smart contract, we need to make the build script executable with `chmod` and then we can run it:
 
@@ -105,5 +105,25 @@ It is encoded like:
 ```
 
 Maximum can be absent in this case it is implicitly set to 4GB.
+
+---
+
+**Terminology**
+
+- [.wasm binary file format](http://webassembly.github.io/spec/core/binary/index.html) - WebAssembly (WASM) format of binary WASM modules
+
+- [.wat text file format](http://webassembly.github.io/spec/core/text/index.html) - WebAssembly Text Format (WAT) is similar to the binary (.wasm) format, but designed to be human readable.
+
+- [`cargo build`](https://doc.rust-lang.org/cargo/commands/cargo-build.html) - Compile the library target of the selected Rust packages.
+
+- [`wasm-opt`](https://github.com/WebAssembly/binaryen#tools) - Tool from the binaryen project that when run on .wasm format binary input file will transform, optimize, and/or run instrumentation passes on it and create .wasm binaries that are usually both smaller and execute faster.
+
+- [`wasm-prune`](https://github.com/paritytech/wasm-utils#symbols-pruning-wasm-prune) - Optimize the WASM symbols tree of a .wasm format binary input file and only leave those elements that are used by contract call function entry.
+
+- [`wasm32-unknown-unknown`](https://rustwasm.github.io/docs/wasm-bindgen/reference/rust-targets.html#supported-rust-targets) - Compile dynamic Rust libraries using a LLVM WASM backend directly to generate a "bare bones" small and fast binary WASM module (.wasm).
+
+- [`wasm2wat`](https://github.com/WebAssembly/wabt#wabt-the-webassembly-binary-toolkit) - It translates from the binary WASM module (.wasm) format back to the WASM text (.wat) format. It is a command from the WebAssembly Binary Toolkit (WABT) that performs the inverse of `wat2wasm`.
+
+- [`wat2wasm`](https://github.com/WebAssembly/wabt#wabt-the-webassembly-binary-toolkit) - Translates from the WASM text (.wat) format to the binary WASM module (.wasm) format. It is a command from the WebAssembly Binary Toolkit (WABT) that performs the inverse of `wasm2wat`.
 
 ---
