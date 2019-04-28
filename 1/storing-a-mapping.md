@@ -159,4 +159,14 @@ Remember to run `cargo test --features test-env` to test your work.
 
 [embedded-code-final](./assets/1.5-finished-code.rs ':include :type=code embed-final')
 
-<!-- tabs:end -->
+<!-- tabs:end -->--
+
+**Learn More**
+
+In ink!, `my_number_or_zero` is an example of setting default values for function
+parameters when no value was provided by the function caller.
+
+In Solidity, function overloading has historically been used as a work-around whilst
+[optional parameters and optional defaults are being incorporated](https://github.com/ethereum/solidity/issues/232).
+
+---
