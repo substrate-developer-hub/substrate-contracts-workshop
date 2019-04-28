@@ -31,7 +31,7 @@ Remember that the `transfer` function and other public functions return a bool t
 pub(external) fn transfer(&mut self, to: AccountId, value: Balance) -> bool {...}
 ```
 
-Finally, the `transfer` function will simply call into the `transfer_impl` with the `from` parameter automatically set to the `env.caller()`. This is our "authorization check" since the contract caller is always authorized to move their own funds.
+Finally, the `transfer` function will simply call into the `transfer_impl` with the `from` parameter automatically set to the `env.caller()`. Hence the reason why the `from` parameter does not need to be shown in `transfer`'s function signature. This is our "authorization check" since the contract caller is always authorized to move their own funds.
 
 ## Transfer Math
 
@@ -60,3 +60,10 @@ Remember to run `cargo test --features test-env` to test your work.
 [embedded-code-final](./assets/2.2-finished-code.rs ':include :type=code embed-final')
 
 <!-- tabs:end -->
+
+**Learn More**
+
+In Solidity, [Function Modifiers](https://solidity.readthedocs.io/en/latest/contracts.html#function-modifiers) are used
+to automatically check a condition prior to executing a function.
+
+---
