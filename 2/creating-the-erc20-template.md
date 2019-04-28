@@ -56,6 +56,7 @@ Remember to run `cargo test --features test-env` to test your work.
 * [Parity Substrate sample runtime implementation of a multiple ERC-20 token standard coded in Rust](https://github.com/parity-samples/substrate-erc20-multi).
 * [Parity Substrate sample runtime implementation of the ERC-721 non-fungible token (NFT) standard coded in Rust](https://github.com/parity-samples/substrate-erc721)
 * [Parity Substrate sample runtime implementation of (a subset of) Token Curated Registries (TCR)](https://github.com/parity-samples/substrate-tcr).
+* [Parity Substrate Assets runtime module library (SRML)](https://github.com/paritytech/substrate/blob/master/srml/assets/src/lib.rs)
 * [Ethereum sample ERC-20 token standard coded in Solidity](https://theethereum.wiki/w/index.php/ERC20_Token_Standard).
 * [Ethereum EIP 20: ERC-20 token standard](https://eips.ethereum.org/EIPS/eip-20).
 * [Ethereum EIP 721: ERC-721 non-fungible token standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md).
