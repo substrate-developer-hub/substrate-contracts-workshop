@@ -9,7 +9,7 @@ use ink_lang::contract;
 
 contract! {
     #![env = DefaultSrmlTypes]
-    
+
     struct Erc20 {
         /// The total supply.
         total_supply: storage::Value<Balance>,
@@ -55,8 +55,8 @@ mod tests {
 
     #[test]
     fn deployment_works() {
-        let alice = AccountId::try_from([0x0; 32]).unwrap();
-        env::test::set_caller(alice);
+        let alice = AccountId::from([0x0; 32]);
+        env::test::set_caller::<Types>(alice);
 
         // Deploy the contract with some `init_value`
         let erc20 = Erc20::deploy_mock(1234);

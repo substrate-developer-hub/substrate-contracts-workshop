@@ -56,7 +56,7 @@ For storage values like the ones above, we can set an initial value with:
 ```rust
 self.my_bool.set(false);
 self.my_number.set(42);
-self.my_account.set(AccountId::try_from([0x0; 32]).unwrap());
+self.my_account.set(AccountId::from([0x0; 32]));
 self.my_balance.set(1337);
 ```
 
@@ -91,7 +91,7 @@ You can deploy a contract with some configurable parameters so that users can cu
 ```rust
 contract! {
     #![env = DefaultSrmlTypes]
-    
+
     struct MyContract {
         // Store a number
         my_number: storage::Value<u32>,

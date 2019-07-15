@@ -64,7 +64,7 @@ contract! {
         }
 
         /// Transfers token from a specified AccountId to another AccountId.
-        fn transfer_impl(&mut self, env: &mut ink_model::EnvHandler, from: AccountId, to: AccountId, value: Balance) -> bool {
+        fn transfer_impl(&mut self, env: &mut ink_model::EnvHandler<ink_core::env::ContractEnv<DefaultSrmlTypes>>, from: AccountId, to: AccountId, value: Balance) -> bool {
             let balance_from = self.balance_of_or_zero(&from);
             let balance_to = self.balance_of_or_zero(&to);
             if balance_from < value {
@@ -89,8 +89,8 @@ mod tests {
 
     #[test]
     fn deployment_works() {
-        let alice = AccountId::try_from([0x0; 32]).unwrap();
-        env::test::set_caller(alice);
+        let alice = AccountId::from([0x0; 32]);
+        env::test::set_caller::<Types>(alice);
 
         // Deploy the contract with some `init_value`
         let erc20 = Erc20::deploy_mock(1234);
@@ -102,10 +102,10 @@ mod tests {
 
     #[test]
     fn transfer_works() {
-        let alice = AccountId::try_from([0x0; 32]).unwrap();
-        let bob = AccountId::try_from([0x1; 32]).unwrap();
+        let alice = AccountId::from([0x0; 32]);
+        let bob = AccountId::from([0x1; 32]);
 
-        env::test::set_caller(alice);
+        env::test::set_caller::<Types>(alice);
         // Deploy the contract with some `init_value`
         let mut erc20 = Erc20::deploy_mock(1234);
         // Alice does not have enough funds for this
@@ -119,17 +119,17 @@ mod tests {
 
     #[test]
     fn events_work() {
-        let alice = AccountId::try_from([0x0; 32]).unwrap();
-        let bob = AccountId::try_from([0x1; 32]).unwrap();
+        let alice = AccountId::from([0x0; 32]);
+        let bob = AccountId::from([0x1; 32]);
 
         // No events to start
-        env::test::set_caller(alice);
-        assert_eq!(env::test::emitted_events().count(), 0);
+        env::test::set_caller::<Types>(alice);
+        assert_eq!(env::test::emitted_events::<Types>().count(), 0);
         // Event should be emitted for initial minting
         let mut erc20 = Erc20::deploy_mock(1234);
-        assert_eq!(env::test::emitted_events().count(), 1);
+        assert_eq!(env::test::emitted_events::<Types>().count(), 1);
         // Event should be emitted for transfers
         assert_eq!(erc20.transfer(bob, 10), true);
-        assert_eq!(env::test::emitted_events().count(), 2);
+        assert_eq!(env::test::emitted_events::<Types>().count(), 2);
     }
 }
