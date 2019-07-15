@@ -1,17 +1,15 @@
 #![cfg_attr(not(any(test, feature = "test-env")), no_std)]
 
 use ink_core::{
-    env::{
-        self,
-        AccountId,
-        Balance,
-    },
+    env::DefaultSrmlTypes,
     memory::format,
     storage,
 };
 use ink_lang::contract;
 
 contract! {
+    #![env = DefaultSrmlTypes]
+
     // Event emitted when a token transfer occurs
     event Transfer {
         from: Option<AccountId>,

@@ -1,17 +1,15 @@
 #![cfg_attr(not(any(test, feature = "test-env")), no_std)]
 
 use ink_core::{
-    env::{
-        self,
-        AccountId,
-        Balance,
-    },
+    env::DefaultSrmlTypes,
     memory::format,
     storage,
 };
 use ink_lang::contract;
 
 contract! {
+    #![env = DefaultSrmlTypes]
+
     // Event emitted when a token transfer occurs
     event Transfer {
         from: Option<AccountId>,
@@ -66,7 +64,7 @@ contract! {
         /// Returns the amount of tokens that an owner allowed to a spender.
         pub(external) fn allowance(&self, owner: AccountId, spender: AccountId) -> Balance {
             let allowance = self.allowance_or_zero(&owner, &spender);
-            env::println(&format!(
+            env.println(&format!(
                 "Erc20::allowance(owner = {:?}, spender = {:?}) = {:?}",
                 owner, spender, allowance
             ));

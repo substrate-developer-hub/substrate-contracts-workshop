@@ -1,17 +1,15 @@
 #![cfg_attr(not(any(test, feature = "test-env")), no_std)]
 
 use ink_core::{
-    env::{
-        self,
-        AccountId,
-        Balance,
-    },
+    env::DefaultSrmlTypes,
     memory::format,
     storage,
 };
 use ink_lang::contract;
 
 contract! {
+    #![env = DefaultSrmlTypes]
+    
     struct Erc20 {
         /// The total supply.
         total_supply: storage::Value<Balance>,
