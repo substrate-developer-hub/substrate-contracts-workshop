@@ -125,7 +125,8 @@ contract! {
 #[cfg(all(test, feature = "test-env"))]
 mod tests {
     use super::*;
-    use std::convert::TryFrom;
+    use ink_core::env;
+    type Types = ink_core::env::DefaultSrmlTypes;
 
     #[test]
     fn deployment_works() {
