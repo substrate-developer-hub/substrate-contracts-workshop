@@ -71,7 +71,7 @@ In the next section we will configure the Polkadot UI.
 
 **Learn More**
 
-TL;DR, this line is adding a maximum size to the Wasm memory declaration, which by default is not included.
+After running all Rust and LLVM optimizations, we apply extra steps to create a more efficient WebAssembly [`wasm`] file.
 
 WebAssembly modules can use two parameters to specify how much memory it wants:
 
