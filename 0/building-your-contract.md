@@ -116,7 +116,7 @@ In the next section we will configure the Polkadot UI.
 ink! provides a built-in overflow protection enabled on our `Cargo.toml` file. It is __recommended__ to keep it enabled as a security mechanism.
 ```
 [profile.release]
-panic = "abort"
+panic = "abort"             <-- Panics shall be treated as aborts: reduces binary size
 lto = true             <-- enable link-time-optimization: more efficient codegen
 opt-level = "z"
 overflow-checks = true    <-- Overflow Protection
