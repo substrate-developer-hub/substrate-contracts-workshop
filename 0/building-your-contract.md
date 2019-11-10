@@ -117,7 +117,7 @@ ink! provides a built-in overflow protection enabled on our `Cargo.toml` file. I
 ```
 [profile.release]
 panic = "abort"
-lto = true
+lto = true             <-- enable link-time-optimization: more efficient codegen
 opt-level = "z"
 overflow-checks = true    <-- Overflow Protection
 ```
