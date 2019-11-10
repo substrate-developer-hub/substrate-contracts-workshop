@@ -19,14 +19,14 @@ The final, optimized `flipper.wasm` file is what we will actually deploy to our 
 ## Contract ABI
 By running the next command we'll generate the Application Binary Interface (ABI):
 ``` bash
-cargo +nightly run -p abi-gen
+cargo contract generate-abi
 ```
 
-You should have a new JSON file (`abi.json`) in the same target directory. This is your contract's ABI. 
+You should have a new JSON file (`abi.json`) in the same target directory. This is your contract's ABI**. 
 
 ``` bash
 target
-├── flipper.wat
+├── flipper.wasm
 └── abi.json
 ```
 
@@ -111,6 +111,16 @@ In the next section we will configure the Polkadot UI.
 
 **Learn More**
 
+> ** ABI generation has a temporary [bug](https://github.com/paritytech/ink/issues/222#issuecomment-549829912).
+
+ink! provides a built-in overflow protection enabled on our `Cargo.toml` file. It is __recommended__ to keep it enabled as a security mechanism.
+```
+[profile.release]
+panic = "abort"
+lto = true
+opt-level = "z"
+overflow-checks = true    <-- Overflow Protection
+```
 After running all Rust and LLVM optimizations, we apply extra steps to create a more efficient WebAssembly [`wasm`] file.
 
 WebAssembly modules can use two parameters to specify how much memory it wants:

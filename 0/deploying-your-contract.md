@@ -3,9 +3,9 @@ Deploying Your Contract
 
 Now that we have generated the Wasm binary from our source code and started a Substrate node, we want to deploy this contract onto our Substrate blockchain.
 
-Smart contract deployment on Substrate is a little different than on traditional smart contract blockchains like Ethereum.
+Smart contract deployment on Substrate is a little different than on traditional smart contract blockchains.
 
-Whereas a completely new blob of smart contract source code is deployed each time you push a contract to Ethereum, Substrate opts to optimize this behavior. For example, the standard ERC20 token has been deployed to Ethereum thousands of times, sometimes only with changes to the initial configuration (through the Solidity `constructor` function). Each of these instances take up space on Ethereum equivalent to the contract source code size, even though no code was actually changed.
+Whereas a completely new blob of smart contract source code is deployed each time you push a contract on other platforms, Substrate opts to optimize this behavior. For example, the standard ERC20 token has been deployed to Ethereum thousands of times, sometimes only with changes to the initial configuration (through the Solidity `constructor` function). Each of these instances take up space on the blockchain equivalent to the contract source code size, even though no code was actually changed.
 
 In Substrate, the contract deployment process is split into two halves:
 
@@ -24,7 +24,7 @@ In the **Code** section, select a _deployment account_ with some account balance
 
 ![Contracts code page for deploying Flipper](./assets/flipper-code-page.png)
 
-After you press **Deploy** and a new block is formed, a system event is emitted with `contract.CodeStored`. This means that you have successfully stored your WASM contract on your Substrate blockchain!
+After you press **Upload** and a new block is formed, a system event is emitted with `contract.CodeStored`. This means that you have successfully stored your WASM contract on your Substrate blockchain!
 
 > **Note**: If you get a `system.ExtrinsicFailed` error message, you may not have allowed enough gas to execute the call.  You can verify that this is the cause by looking at the logs in the terminal. It will show an error stating `Runtime: not enough gas to pay base instantiate fee` or a similar error message.  This may occur on this or any subsequent contract instantiations or calls.  If this occurs, increase the _maximum gas allowed_ argument and try again.
 
