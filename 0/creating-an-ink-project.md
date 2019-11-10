@@ -28,7 +28,7 @@ flipper
 |   |
 |   +-- lib.rs            <-- Contract Source Code
 |
-+-- Cargo.toml            <-- Rust Dependecies and ink! Configuration
++-- Cargo.toml            <-- Rust Dependencies and ink! Configuration
 |
 +-- .gitignore
 ```
