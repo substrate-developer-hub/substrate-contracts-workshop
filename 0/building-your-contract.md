@@ -118,7 +118,7 @@ ink! provides a built-in overflow protection enabled on our `Cargo.toml` file. I
 [profile.release]
 panic = "abort"             <-- Panics shall be treated as aborts: reduces binary size
 lto = true             <-- enable link-time-optimization: more efficient codegen
-opt-level = "z"
+opt-level = "z"            <-- Optimize for small binary output
 overflow-checks = true    <-- Overflow Protection
 ```
 After running all Rust and LLVM optimizations, we apply extra steps to create a more efficient WebAssembly [`wasm`] file.
