@@ -11,11 +11,11 @@ In the **Call** section, set the _message to send_ to `get(): bool`. Set the _ma
 
 ![An image of the Contracts call page](./assets/flipper-call-page.png)
 
-Contract calls cannot return a value to the outside world. So when you press **Call**, you will get a pretty unsatisfying `system.ExtrinsicSuccess` message. However, ink! provides a debugging tool to enable you to print messages to your node's terminal.
+We can call our ink! contract through the RPC to read the contract's storage. ink! also provides an alternative debugging tool for our smart contracts by printing the messages in the node's terminal.
 
-If we take a look, we can actually see our storage value:
+After calling the contract storage through the RPC, we can get the latest value:
 
-![An image of println in the terminal for Flipper with false](./assets/flipper-false.png)
+![An image of Flipper RPC call with false](./assets/flipper-false.png)
 
 > **Note:** `self.env().println` is only allowed on `--dev` chains for debugging purposes. If you try to deploy a contract with `self.env().println` on a non-dev chain, it will not succeed.
 
@@ -29,7 +29,7 @@ The alternative _message to send_ we can make with the UI is `flip()`. Again, se
 
 If the extrinsic was successful, we should then be able to go back to the `get()` function and see our updated storage:
 
-![An image of println in the terminal for Flipper with true](./assets/flipper-true.png)
+![An image of Flipper RPC call with true](./assets/flipper-true.png)
 
 Woohoo! You deployed your first smart contract!
 
