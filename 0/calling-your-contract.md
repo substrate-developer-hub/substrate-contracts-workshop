@@ -5,11 +5,9 @@ Now that your contract has been fully deployed, we can start to interact with it
 
 ## get()
 
-If you take a look back at our contract's `deploy()` function, we set the initial value of the Flipper contract to `false`. Let's check that this is the case.
+If you take a look back at our contract's `on_deploy()` function, we set the initial value of the Flipper contract to `false`. Let's check that this is the case.
 
 In the **Call** section, set the _message to send_ to `get(): bool`. Set the _maximum gas allowed_ to `500,000`.
-
-> **Note:** You should not need to send any _value_ when making a contract call, but there is a temporary bug in the UI requiring it, so we just put `1`.
 
 ![An image of the Contracts call page](./assets/flipper-call-page.png)
 
