@@ -15,9 +15,9 @@ Contract calls cannot return a value to the outside world. So when you press **C
 
 If we take a look, we can actually see our storage value:
 
-![An image of println in the terminal for Flipper with false](./assets/flipper-println-false.png)
+![An image of println in the terminal for Flipper with false](./assets/flipper-false.png)
 
-> **Note:** `env.println` is only allowed on `--dev` chains for debugging purposes. If you try to deploy a contract with `env.println` on a non-dev chain, it will not succeed.
+> **Note:** `self.env().println` is only allowed on `--dev` chains for debugging purposes. If you try to deploy a contract with `self.env().println` on a non-dev chain, it will not succeed.
 
 While this is not a great long term solution, it works very well for debugging contracts, and is a placeholder for more mature solutions like contract events and dedicated view RPCs which are still under development.
 
@@ -29,7 +29,7 @@ The alternative _message to send_ we can make with the UI is `flip()`. Again, se
 
 If the extrinsic was successful, we should then be able to go back to the `get()` function and see our updated storage:
 
-![An image of println in the terminal for Flipper with true](./assets/flipper-println-true.png)
+![An image of println in the terminal for Flipper with true](./assets/flipper-true.png)
 
 Woohoo! You deployed your first smart contract!
 
