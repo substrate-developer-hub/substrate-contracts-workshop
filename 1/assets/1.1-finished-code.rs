@@ -1,33 +1,41 @@
-#![cfg_attr(not(any(test, feature = "std")), no_std)]
+#![feature(proc_macro_hygiene)]
+#![cfg_attr(not(feature = "std"), no_std)]
 
-// Import the `contract!` macro
-use ink_lang::contract;
-use ink_core::env::DefaultSrmlTypes;
+use ink_core::storage;
+use ink_lang2 as ink;
 
-contract! {
-    #![env = DefaultSrmlTypes]
-    
+#[ink::contract(version = "0.1.0")]
+mod incrementer {
+    #[ink(storage)]
     struct Incrementer {
         // Storage Declaration
     }
 
-    impl Deploy for Incrementer {
-        fn deploy(&mut self) {
+    impl Incrementer {
+        #[ink(constructor)]
+        fn new(&mut self, init_value: i32) {
             // Contract Constructor
         }
+
+        #[ink(constructor)]
+        fn default(&mut self) {
+            // Set Default Value Constructor
+        }
+
     }
 
-    impl Incrementer {
-        // Implementation of Contract Functions
-    }
-}
+    #[cfg(test)]
+    mod tests {
+        use super::*;
 
-#[cfg(all(test, feature = "test-env"))]
-mod tests {
-    use super::*;
+        #[test]
+        fn default_works() {
+            // Test Your Contract
+        }
 
-    #[test]
-    fn incrementer_works() {
-        // Test Your Contract
+        #[test]
+        fn it_works() {
+            // Test Your Contract
+        }
     }
 }
