@@ -12,28 +12,28 @@ mod erc20 {
         total_supply: storage::Value<Balance>,
         /// The balance of each user.
         balances: storage::HashMap<AccountId, Balance>,
-        /// Approved spender on behalf of the message's sender.
+        /// Approval spender on behalf of the message's sender.
         allowances: storage::HashMap<(AccountId, AccountId), Balance>,
     }
 
     #[ink(event)]
-    struct Transferred {
+    struct Transfer {
         #[ink(topic)]
         from: Option<AccountId>,
         #[ink(topic)]
         to: Option<AccountId>,
         #[ink(topic)]
-        amount: Balance,
+        value: Balance,
     }
 
     #[ink(event)]
-    struct Approved {
+    struct Approval {
         #[ink(topic)]
         owner: AccountId,
         #[ink(topic)]
         spender: AccountId,
         #[ink(topic)]
-        amount: Balance,
+        value: Balance,
     }
 
     impl Erc20 {
@@ -42,10 +42,10 @@ mod erc20 {
             let caller = self.env().caller();
             self.total_supply.set(initial_supply);
             self.balances.insert(caller, initial_supply);
-            self.env().emit_event(Transferred {
+            self.env().emit_event(Transfer {
                 from: None,
                 to: Some(caller),
-                amount: initial_supply,
+                value: initial_supply,
             });
         }
 
@@ -60,11 +60,11 @@ mod erc20 {
         }
 
         #[ink(message)]
-        fn approve(&mut self, spender: AccountId, amount: Balance) -> bool {
+        fn approve(&mut self, spender: AccountId, value: Balance) -> bool {
             // ACTION: Get the `self.env().caller()` and store it as the `owner`
             // ACTION: Insert the new allowance into the `allowances` HashMap
             //   HINT: The key tuple is `(owner, spender)`
-            // ACTION: `emit` the `Approved` event you created using these values
+            // ACTION: `emit` the `Approval` event you created using these values
             // ACTION: Return true if everything was successful
         }
 
@@ -72,11 +72,11 @@ mod erc20 {
         fn allowance(&self, owner: AccountId, spender: AccountId) -> Balance {
             // ACTION: Create a getter for the `allowances` HashMap
             //   HINT: Take a look at the getters above if you forget the details
-            // ACTION: Return the `allowance` amount
+            // ACTION: Return the `allowance` value
         }
 
         #[ink(message)]
-        fn transfer_from(&mut self, from: AccountId, to: AccountId, amount: Balance) -> bool {
+        fn transfer_from(&mut self, from: AccountId, to: AccountId, value: Balance) -> bool {
             // ACTION: Get the allowance for `(from, self.env().caller())` using `allowance_of_or_zero`
             // ACTION: `if` the `allowance` is less than the `value`, exit early and return `false`
             // ACTION: `insert` the new allowance into the map for `(from, self.env().caller())`
@@ -85,23 +85,23 @@ mod erc20 {
         }
 
         #[ink(message)]
-        fn transfer(&mut self, to: AccountId, amount: Balance) -> bool {
+        fn transfer(&mut self, to: AccountId, value: Balance) -> bool {
             let from = self.env().caller();
-            self.transfer_from_to(from, to, amount)
+            self.transfer_from_to(from, to, value)
         }
 
-        fn transfer_from_to(&mut self, from: AccountId, to: AccountId, amount: Balance) -> bool {
+        fn transfer_from_to(&mut self, from: AccountId, to: AccountId, value: Balance) -> bool {
             let from_balance = self.balance_of_or_zero(&from);
-            if from_balance < amount {
+            if from_balance < value {
                 return false
             }
             let to_balance = self.balance_of_or_zero(&to);
-            self.balances.insert(from, from_balance - amount);
-            self.balances.insert(to, to_balance + amount);
-            self.env().emit_event(Transferred {
+            self.balances.insert(from, from_balance - value);
+            self.balances.insert(to, to_balance + value);
+            self.env().emit_event(Transfer {
                 from: Some(from),
                 to: Some(to),
-                amount,
+                value,
             });
             true
         }

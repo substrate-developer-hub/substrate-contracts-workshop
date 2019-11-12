@@ -33,19 +33,19 @@ mod erc20 {
         }
 
         #[ink(message)]
-        fn transfer(&mut self, to: AccountId, amount: Balance) -> bool {
+        fn transfer(&mut self, to: AccountId, value: Balance) -> bool {
             let from = self.env().caller();
-            self.transfer_from_to(from, to, amount)
+            self.transfer_from_to(from, to, value)
         }
 
-        fn transfer_from_to(&mut self, from: AccountId, to: AccountId, amount: Balance) -> bool {
+        fn transfer_from_to(&mut self, from: AccountId, to: AccountId, value: Balance) -> bool {
             let from_balance = self.balance_of_or_zero(&from);
-            if from_balance < amount {
+            if from_balance < value {
                 return false
             }
             let to_balance = self.balance_of_or_zero(&to);
-            self.balances.insert(from, from_balance - amount);
-            self.balances.insert(to, to_balance + amount);
+            self.balances.insert(from, from_balance - value);
+            self.balances.insert(to, to_balance + value);
             true
         }
 

@@ -33,11 +33,11 @@ mod erc20 {
         }
 
         #[ink(message)]
-        fn transfer(&mut self, to: AccountId, amount: Balance) -> bool {
+        fn transfer(&mut self, to: AccountId, value: Balance) -> bool {
              // ACTION: Call the `transfer_impl` with `from` as `self.env().caller()`
         }
 
-        fn transfer_from_to(&mut self, from: AccountId, to: AccountId, amount: Balance) -> bool {
+        fn transfer_from_to(&mut self, from: AccountId, to: AccountId, value: Balance) -> bool {
             // ACTION: Get the balance for `from` and `to`
             //   HINT: Use the `balance_of_or_zero` function to do this
             // ACTION: If `balance` from is less than `value`, return `false`

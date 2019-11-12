@@ -15,11 +15,11 @@ mod erc20 {
     }
 
     #[ink(event)]
-    struct Transferred {
-    //  ACTION: Create a `Transferred` event with:
+    struct Transfer {
+    //  ACTION: Create a `Transfer` event with:
     //          * from: Option<AccountId>
     //          * to: Option<AccountId>
-    //          * amount: Balance
+    //          * value: Balance
     }
 
     impl Erc20 {
@@ -28,7 +28,7 @@ mod erc20 {
             let caller = self.env().caller();
             self.total_supply.set(initial_supply);
             self.balances.insert(caller, initial_supply);
-            // ACTION: Call `self.env().emit_event` with the `Transferred` event
+            // ACTION: Call `self.env().emit_event` with the `Transfer` event
             //   HINT: Since we use `Option<AccountId>`, you need to wrap accounts in `Some()`
         }
 
@@ -43,20 +43,20 @@ mod erc20 {
         }
 
         #[ink(message)]
-        fn transfer(&mut self, to: AccountId, amount: Balance) -> bool {
+        fn transfer(&mut self, to: AccountId, value: Balance) -> bool {
             let from = self.env().caller();
-            self.transfer_from_to(from, to, amount)
+            self.transfer_from_to(from, to, value)
         }
 
-        fn transfer_from_to(&mut self, from: AccountId, to: AccountId, amount: Balance) -> bool {
+        fn transfer_from_to(&mut self, from: AccountId, to: AccountId, value: Balance) -> bool {
             let from_balance = self.balance_of_or_zero(&from);
-            if from_balance < amount {
+            if from_balance < value {
                 return false
             }
             let to_balance = self.balance_of_or_zero(&to);
-            self.balances.insert(from, from_balance - amount);
-            self.balances.insert(to, to_balance + amount);
-            // ACTION: Call `self.env().emit_event` with the `Transferred` event
+            self.balances.insert(from, from_balance - value);
+            self.balances.insert(to, to_balance + value);
+            // ACTION: Call `self.env().emit_event` with the `Transfer` event
             //   HINT: Since we use `Option<AccountId>`, you need to wrap accounts in `Some()`
             true
         }
