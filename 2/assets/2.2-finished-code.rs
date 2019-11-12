@@ -54,4 +54,30 @@ mod erc20 {
         }
 
     }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+
+        #[test]
+        fn new_works() {
+            let contract = Erc20::new(777);
+            assert_eq!(contract.total_supply(), 777);
+        }
+
+        #[test]
+        fn balance_works() {
+            let contract = Erc20::new(100);
+            assert_eq!(contract.total_supply(), 100);
+            assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 0);
+        }
+
+        #[test]
+        fn transfer_works() {
+            let mut contract = Erc20::new(100);
+            assert_eq!(contract.balance_of(AccountId::from([0x0; 32])), 100);
+            contract.transfer(AccountId::from([0x1; 32]), 10);
+            assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 10);
+        }
+    }
 }

@@ -117,4 +117,39 @@ mod erc20 {
             *self.allowances.get(&(*owner, *spender)).unwrap_or(&0)
         }
     }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+
+        #[test]
+        fn new_works() {
+            let contract = Erc20::new(777);
+            assert_eq!(contract.total_supply(), 777);
+        }
+
+        #[test]
+        fn balance_works() {
+            let contract = Erc20::new(100);
+            assert_eq!(contract.total_supply(), 100);
+            assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 0);
+        }
+
+        #[test]
+        fn transfer_works() {
+            let mut contract = Erc20::new(100);
+            assert_eq!(contract.balance_of(AccountId::from([0x0; 32])), 100);
+            contract.transfer(AccountId::from([0x1; 32]), 10);
+            assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 10);
+        }
+
+        #[test]
+        fn transfer_from_works() {
+            let mut contract = Erc20::new(100);
+            assert_eq!(contract.balance_of(AccountId::from([0x0; 32])), 100);
+            contract.approve(AccountId::from([0x0; 32]), 20);
+            contract.transfer_from(AccountId::from([0x0; 32]), AccountId::from([0x1; 32]), 10);
+            assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 10);
+        }
+    }
 }

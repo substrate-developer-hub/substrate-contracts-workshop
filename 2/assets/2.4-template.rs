@@ -81,6 +81,7 @@ mod erc20 {
             // ACTION: `if` the `allowance` is less than the `value`, exit early and return `false`
             // ACTION: `insert` the new allowance into the map for `(from, self.env().caller())`
             // ACTION: Finally, call the `transfer_from_to` for `from` and `to`
+            // ACTION: Return true if everything was successful
         }
 
         #[ink(message)]
@@ -111,6 +112,41 @@ mod erc20 {
 
         fn allowance_of_or_zero(&self, owner: &AccountId, spender: &AccountId) -> Balance {
             *self.allowances.get(&(*owner, *spender)).unwrap_or(&0)
+        }
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+
+        #[test]
+        fn new_works() {
+            let contract = Erc20::new(777);
+            assert_eq!(contract.total_supply(), 777);
+        }
+
+        #[test]
+        fn balance_works() {
+            let contract = Erc20::new(100);
+            assert_eq!(contract.total_supply(), 100);
+            assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 0);
+        }
+
+        #[test]
+        fn transfer_works() {
+            let mut contract = Erc20::new(100);
+            assert_eq!(contract.balance_of(AccountId::from([0x0; 32])), 100);
+            contract.transfer(AccountId::from([0x1; 32]), 10);
+            assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 10);
+        }
+
+        #[test]
+        fn transfer_from_works() {
+            let mut contract = Erc20::new(100);
+            assert_eq!(contract.balance_of(AccountId::from([0x0; 32])), 100);
+            contract.approve(AccountId::from([0x0; 32]), 20);
+            contract.transfer_from(AccountId::from([0x0; 32]), AccountId::from([0x1; 32]), 10);
+            assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 10);
         }
     }
 }

@@ -35,6 +35,18 @@ mod erc20 {
         fn balance_of_or_zero(&self, owner: &AccountId) -> Balance {
             *self.balances.get(owner).unwrap_or(&0)
         }
+    }
+    
+    #[cfg(test)]
+    mod tests {
+        use super::*;
 
+        #[test]
+        fn new_works() {
+            let mut contract = Erc20::new(0);
+            assert_eq!(contract.total_supply(), 0);
+            contract.new(777);
+            assert_eq!(contract.total_supply(), 777);
+        }
     }
 }
