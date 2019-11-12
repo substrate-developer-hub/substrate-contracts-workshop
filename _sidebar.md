@@ -29,5 +29,5 @@
     - [Testing our Contract](2/testing-our-contract.md)
 
 - [Docs](https://substrate.dev)
-- [Report an Issue](https://github.com/substrate-developer-hub/substrate-contracts-workshop/issues)
+- [Report an Issue](https://github.com/substrate-developer-hub/ink-tutorial-1/issues)
 - [r/substrate](https://www.reddit.com/r/substrate)
