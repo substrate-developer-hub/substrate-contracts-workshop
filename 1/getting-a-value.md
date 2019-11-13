@@ -5,10 +5,10 @@ Now that we have created and initialized a storage value, we are going to start 
 
 ## Contract Functions
 
-As you can see in the contract template, all of your contract functions go into an implementation of your contract's `struct`:
+As you can see in the contract template, all of your contract functions are part of your contract module.
 
 ```rust
-impl MyContract {
+mod mycontract {
     // Public and Private functions can go here
 }
 ```
@@ -18,14 +18,15 @@ impl MyContract {
 In Rust, you can make as many implementations as you want. As a stylistic choice, we recommend breaking up your implementation definitions for your private and public functions:
 
 ```rust
-impl MyContract {
+mod mycontract {
     // Public functions go here
-    pub(external) fn my_public_function(&self) {
+    #[ink(message)]
+    fn my_public_function(&self) {
         ...
     } 
 }
 
-impl MyContract {
+mod mycontract {
     // Private functions go here
     fn my_private_function(&self) {
         ...
@@ -35,7 +36,7 @@ impl MyContract {
 
 You can also choose to split things up however is most clear for your project.
 
-Note that all public functions must be prefixed with `pub(external)`, not just `pub`.
+Note that all public functions must use the `#[ink(message)]` attribute.
 
 ## Storage Value API
 
@@ -46,7 +47,7 @@ From [core/storage/value.rs](https://github.com/paritytech/ink/blob/master/core/
 ```rust
 impl<T> Value<T>
 where
-    T: parity_codec::Codec,
+    T: scale::Codec,
 {
     /// Returns an immutable reference to the wrapped value.
     pub fn get(&self) -> &T {
@@ -72,8 +73,9 @@ In that same file, you can find the other APIs exposed by storage values, howeve
 We already showed you how to use `set` when we initialized the storage value. Getting the value is just as simple:
 
 ```rust
-impl MyContract {
-    pub(external) fn my_getter(&self) -> u32 {
+mod mycontract {
+    #[ink(message)]
+    fn my_getter(&self) -> u32 {
         let number = *self.my_number.get();
         number
     }
@@ -85,8 +87,9 @@ You should take notice that the `get` API returns a _reference_ to the value, so
 You can also drop `.get()` to implicitly get the value:
 
 ```rust
-impl MyContract {
-    pub(external) fn my_getter(&self) -> u32 {
+mod mycontract {
+    #[ink(message)]
+    fn my_getter(&self) -> u32 {
         *self.my_number
     }
 }
@@ -99,11 +102,12 @@ A getter like the one we wrote above is great when you are working inside the bl
 ink! provides a very helpful debugging tool for getting messages to the outside world. You used it already when calling the Flipper contract:
 
 ```rust
-impl Flipper {
+mod flipper {
     ...
     /// Returns the current state.
-    pub(external) fn get(&self) -> bool {
-        env.println(&format!("Flipper Value: {:?}", *self.value));
+    #[ink(message)]
+    fn get(&self) -> bool {
+        self.env().println(&format!("Flipper Value: {:?}", *self.value));
         *self.value
     }
 }

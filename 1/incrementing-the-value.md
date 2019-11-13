@@ -10,7 +10,7 @@ You may have noticed that the function templates included `self` as the first pa
 If you are simply _reading_ from the contract storage, you only need to pass `&self`. But if you want to _modify_ storage items, you will need to explicitly mark it as mutable, `&mut self`.
 
 ```rust
-impl MyContract {
+mod mycontract {
     pub(external) fn my_getter(&self) -> u32 {
         env.println(&format!("my_number is {:?}", *self.my_number));
         *self.my_number
@@ -29,7 +29,7 @@ You can always update the value of a storage item by called `set` again as we sh
 However, if you know the value is already set, then you can modify the value in a more ergonomic way:
 
 ```rust
-impl MyContract {
+mod mycontract {
     pub(external) fn my_setter(&mut self, new_value: u32) {
         self.my_number = new_value;
     }

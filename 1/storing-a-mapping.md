@@ -62,7 +62,7 @@ contract! {
         }
     }
 
-    impl MyContract {
+    mod mycontract {
         /// Returns the number for an AccountId or 0 if it is not set.
         fn my_number_or_zero(&self, of: &AccountId) -> u32 {
             let balance = self.my_number_map.get(of).unwrap_or(&0);
@@ -90,7 +90,7 @@ contract! {
         }
     }
 
-    impl MyContract {
+    mod mycontract {
         // Get the value for a given AccountId
         pub(external) fn get(&self, of: AccountId) -> u32 {
             let value = self.my_number_or_zero(&of);
@@ -107,7 +107,7 @@ contract! {
         }
     }
 
-    impl MyContract {
+    mod mycontract {
         /// Returns the number for an AccountId or 0 if it is not set.
         fn my_number_or_zero(&self, of: &AccountId) -> u32 {
             let value = self.my_number_map.get(of).unwrap_or(&0);

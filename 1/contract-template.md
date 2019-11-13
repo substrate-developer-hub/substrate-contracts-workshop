@@ -13,7 +13,7 @@ ink! exists at 3 different layers:
 * Model: Medium-level abstractions to write smart contracts heavily inspired by [Fleetwood](https://github.com/paritytech/fleetwood).
 * Language (Lang): The actual eDSL based on ink! Core and ink! Model to provide a user friendly interface to writing smart contract code.
 
-The Language layer of ink! relies on a single, heavy macro called `contract!`. At compile time, this macro expands to generate code at the Model and Core level. For the purposes of this guide, we will be focusing on the Language layer of ink! where we expect most contract development to take place. Take a quick look over the ink! contract template provided here.
+The Language layer of ink! relies on implementing a few easy to use attribute macros. At compile time, this macros expands to generate code at the Model and Core level. For the purposes of this guide, we will be focusing on the Language layer of ink! where we expect most contract development to take place. Take a quick look over the ink! contract template provided here.
 
 ## Your Turn!
 
