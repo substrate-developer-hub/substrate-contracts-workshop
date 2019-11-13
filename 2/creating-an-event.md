@@ -5,19 +5,23 @@ Recall that contract calls cannot directly return a value to the outside world. 
 
 ## Declaring Events
 
-An event can communicate an arbitrary amount of data, defined in a similar manner as a `struct`.  Events should be declared inside the `contract!` macro.
+An event can communicate an arbitrary amount of data, defined in a similar manner as a `struct`.  Events should be declared using the `#[ink(event)]` attribute.
 
 For example,
 
 ```rust
-event Foo {
-      from: Option<AccountId>,
-      to: Option<AccountId>,
-      value: 100,
+#[ink(event)]
+struct Foo {
+    #[ink(topic)]
+    from: Option<AccountId>,
+    #[ink(topic)]
+    to: Option<AccountId>,
+    value: Balance,
 }
 ```
 
-This `Foo` event will contain three pieces of data - a value of type `Balance` and two Option-wrapped `AccountId` variables indicating the `from` and `to` accounts.  Before we move on, let's discuss what these `Option` variables mean.
+This `Foo` event will contain three pieces of data - a value of type `Balance` and two Option-wrapped `AccountId` variables indicating the `from` and `to` accounts. For faster access to the event data they can have indexed fields. We can do this by using the `#[ink(topic)]` attribute. 
+Before we move on, let's discuss what these `Option` variables mean.
 
 ## Understanding Option, Some, and None
 
@@ -47,28 +51,25 @@ Note that there other ways to interact with `Option` variables.  You can find mo
 
 ## Emitting Events
 
-Now that we have defined what data will be contained within the event and how to declare it, it's time to actually emit some events.  We do this by calling `env.emit()` and include an event as the sole argument to the method call.
+Now that we have defined what data will be contained within the event and how to declare it, it's time to actually emit some events.  We do this by calling `self.env().emit_event` and include an event as the sole argument to the method call.
 
 Remember that since the `from` and `to` fields are Option<AccountId>, we can't just set them to particular values.  Let's assume we want to set an value of 100 for the initial deployer.  This value does not come from any other account, and so the `from` value should be None.
 
 ```rust
-env.emit( Foo {
-  from: None,
-  to: Some(env.caller()),
-  value: 100,
-  });
+self.env()
+    .emit_event(
+        Transfer {
+            from: None,
+            to: Some(self.env().caller()),
+            value: 100,
+        });
 ```
 
 Note that `value` does not need a `Some()`, as the value is not specified to be stored within an `Option()`.
 
-We want to emit a Foo event every time that a transfer takes place.  In the ERC-20 template that we have been working on, this occurs in two places: first, during the `deploy` call, and second, every time that `transfer_impl` is called.
+We want to emit a Foo event every time that a transfer takes place.  In the ERC-20 template that we have been working on, this occurs in two places: first, during the `new` call, and second, every time that `transfer_from_to` is called.
 
 For more examples of event definition and emitting, you can see here: [**click**](https://github.com/paritytech/ink/blob/master/examples/lang/events/src/lib.rs)
-
-TODO:
-
-- Talk about `deposit_event` and `deposit_raw_event`
-
 
 ## Your Turn!
 

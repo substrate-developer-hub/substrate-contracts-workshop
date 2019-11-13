@@ -9,7 +9,7 @@ Back in your working directory, run:
 cargo contract new erc20
 ```
 
-Again, we will replace the `src/lib.rs` file content with the template provided on this page.
+Again, we will replace the `lib.rs` file content with the template provided on this page.
 
 You will notice that the template for the ERC20 token is VERY similar to the Incrementer contract. (Coincidence? ¯\\_(ツ)_/¯)
 
@@ -24,7 +24,7 @@ The most basic ERC20 token contract is a fixed supply token. During contract dep
 
 Of course, this is not the only way to mint and distribute tokens, but the most simple one and what we will be doing here.
 
-So remember to `set` the total balance and `insert` the balance of the `env.caller()`
+So remember to `set` the total balance and `insert` the balance of the `self.env().caller()`
 
 ## Your Turn!
 

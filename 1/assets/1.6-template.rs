@@ -40,8 +40,9 @@ mod incrementer {
 
         #[ink(message)]
         fn inc_mine(&mut self, by: u64) {
-            // ACTION: Get `my_value` using `my_value_or_zero` to get the current value of `self.env().caller()`
-            // ACTION: Insert the new value `(my_value + by)` back into the mapping
+            // ACTION: Get `my_value` that belongs to `self.env().caller()` by using the getter.
+            // ACTION: Insert or mutate the value `(value + by)` back into the mapping.
+            //  HINT: If the value exists you only need to update it with `mutate_with`.
         }
 
         fn my_value_or_zero(&self, of: &AccountId) -> u64 {
