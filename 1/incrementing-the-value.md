@@ -13,7 +13,7 @@ If you are simply _reading_ from the contract storage, you only need to pass `&s
 mod mycontract {
     #[ink(message)]
     fn my_getter(&self) -> u32 {
-        env.println(&format!("my_number is {:?}", *self.my_number));
+        self.env().println(&format!("my_number is {:?}", *self.my_number));
         *self.my_number
     } 
 

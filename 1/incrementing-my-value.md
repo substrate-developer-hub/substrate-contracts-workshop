@@ -40,7 +40,7 @@ Here we have written two kinds of functions which modify a HashMap. One which si
 
 ## Feel the Pain (Optional)
 
-We will not always have an existing value on our contract's storage. We can take advantage of the Rust Option<> type to help use on this task.
+We will not always have an existing value on our contract's storage. We can take advantage of the Rust `Option<T>` type to help use on this task.
 If there's no value on the contract storage we will insert a new one; On the contrary if there is an existing value we will only update it.
 
 Before we move on, let's discuss what these `Option` variables mean.
@@ -70,7 +70,7 @@ let d = b.unwrap_or(&0);
 
 Note that there other ways to interact with `Option` variables.  You can find more information in the Rust language docs here: https://doc.rust-lang.org/std/option/enum.Option.html
 
-ink! HashMaps getters return an Option<> that we can use to identify if there is an existing value on our storage.
+ink! HashMaps getters return an `Option<T>` that we can use to identify if there is an existing value on our storage.
 
 ```rust
 let caller = self.env().caller();
