@@ -16,13 +16,13 @@ target
 
 The final, optimized `flipper.wasm` file is what we will actually deploy to our Substrate chain.
 
-## Contract ABI
-By running the next command we'll generate the Application Binary Interface (ABI):
+## Contract Metadata
+By running the next command we'll generate the Application Binary Interface (ABI), or metadata:
 ``` bash
 cargo contract generate-abi
 ```
 
-You should have a new JSON file (`abi.json`) in the same target directory. This is your contract's ABI**. 
+You should have a new JSON file (`abi.json`) in the same target directory. This is your contract's metadata**. 
 
 ``` bash
 target
