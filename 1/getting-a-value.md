@@ -19,18 +19,18 @@ In Rust, you can make as many implementations as you want. As a stylistic choice
 
 ```rust
 mod mycontract {
-    // Public functions go here
+    /// Public function
     #[ink(message)]
     fn my_public_function(&self) {
-        ...
-    } 
-}
-
-mod mycontract {
-    // Private functions go here
-    fn my_private_function(&self) {
-        ...
+        /* --snip-- */
     }
+
+    /// Private function
+    fn my_private_function(&self) {
+        /* --snip-- */
+    }
+
+    /* --snip-- */
 }
 ```
 
