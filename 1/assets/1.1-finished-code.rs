@@ -29,11 +29,6 @@ mod incrementer {
         use super::*;
 
         #[test]
-        fn default_works() {
-            // Test Your Contract
-        }
-
-        #[test]
         fn it_works() {
             // Test Your Contract
         }

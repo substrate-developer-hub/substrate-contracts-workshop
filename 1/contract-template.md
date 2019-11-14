@@ -21,6 +21,10 @@ cargo contract new incrementer
 
 Just like before, this will create a new project folder named `incrementer` which we will use for the rest of this chapter.
 
+```bash
+cd incrementer/
+```
+
 In the `lib.rs` file, replace the "Flipper" contract source code with the template code provided here.
 
 Quickly check that it compiles and the trivial test passes with:
