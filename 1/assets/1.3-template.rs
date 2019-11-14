@@ -23,9 +23,10 @@ mod incrementer {
         }
 
         #[ink(message)]
-        fn get(&self) -> i32 {
-            // ACTION: Return `self.value`. 
-            //   HINT: You may need to use the dereference operator.
+        // ACTION: Update this function to return an i32.
+        fn get(&self) {
+            // ACTION: Return the `value`. 
+            //   HINT: You may need to dereference the `value`.
         }
     }
 
@@ -37,11 +38,6 @@ mod incrementer {
         fn default_works() {
             let contract = Incrementer::default();
             assert_eq!(contract.get(), 0);
-        }
-
-        #[test]
-        fn it_works() {
-            // Test Your Contract
         }
     }
 }

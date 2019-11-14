@@ -37,10 +37,5 @@ mod incrementer {
             let contract = Incrementer::default();
             assert_eq!(contract.get(), 0);
         }
-
-        #[test]
-        fn it_works() {
-            // Test Your Contract
-        }
     }
 }
