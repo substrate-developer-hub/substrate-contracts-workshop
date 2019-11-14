@@ -24,15 +24,6 @@ This `Foo` event will contain three pieces of data - a value of type `Balance` a
 
 One way of retrieving data from an Option<T> variable is using the `.unwrap_or()` function.  You may recall using this in the `my_value_or_zero()` and `balance_of_or_zero()` functions in this project and the Incrementer project.  
 
-```rust
-// Since a has a value Some(1), the 1 will be "unwrapped" and placed in c
-let c = a.unwrap_or(&0);
-// Since b has a value None, the default value 0 will be placed in d
-let d = b.unwrap_or(&0);
-```
-
-Note that there other ways to interact with `Option` variables.  You can find more information in the Rust language docs here: https://doc.rust-lang.org/std/option/enum.Option.html
-
 ## Emitting Events
 
 Now that we have defined what data will be contained within the event and how to declare it, it's time to actually emit some events.  We do this by calling `self.env().emit_event` and include an event as the sole argument to the method call.

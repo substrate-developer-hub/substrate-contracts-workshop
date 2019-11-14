@@ -60,6 +60,18 @@ let a: Option<u32> = Some(1);
 let b: Option<u32> = None;
 ```
 
+A Rust `Option` can be unwrapped to get the encapsulated value from the `Some` case or set a default value.
+```rust
+// Since a has a value Some(1), the 1 will be "unwrapped" and placed in c
+let c = a.unwrap_or(&0);
+// Since b has a value None, the default value 0 will be placed in d
+let d = b.unwrap_or(&0);
+```
+
+Note that there other ways to interact with `Option` variables.  You can find more information in the Rust language docs here: https://doc.rust-lang.org/std/option/enum.Option.html
+
+ink! HashMaps getters return an Option<> that we can use to identify if there is an existing value on our storage.
+
 ```rust
 let caller = self.env().caller();
 match self.my_number_map.get(&caller) {
