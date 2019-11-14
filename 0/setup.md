@@ -38,5 +38,5 @@ cargo install --force --git https://github.com/paritytech/ink cargo-contract
 ```
 
 You can then use `cargo contract --help` to start exploring the commands made available to you.  
-> **Note**: The ink! CLI is under heavy development and some of its commands are not implemented, yet!
+> **Note:** The ink! CLI is under heavy development and some of its commands are not implemented, yet!
 
