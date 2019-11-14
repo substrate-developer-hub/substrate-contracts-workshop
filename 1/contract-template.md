@@ -7,13 +7,7 @@ Let's take a look at a high level what is available to you when developing a sma
 
 ink! is an [eDSL](https://wiki.haskell.org/Embedded_domain_specific_language) to write WebAssembly based smart contracts in the Rust programming language.
 
-ink! exists at 3 different layers:
-
-* Core: The core utilities used to write smart contracts.
-* Model: Medium-level abstractions to write smart contracts heavily inspired by [Fleetwood](https://github.com/paritytech/fleetwood).
-* Language (Lang): The actual eDSL based on ink! Core and ink! Model to provide a user friendly interface to writing smart contract code.
-
-The Language layer of ink! relies on implementing a few easy to use attribute macros. At compile time, this macros expands to generate code at the Model and Core level. For the purposes of this guide, we will be focusing on the Language layer of ink! where we expect most contract development to take place. Take a quick look over the ink! contract template provided here.
+ink! is just standard Rust in a well defined "contract format" with specialized `#[ink(...)]` attribute macros. These attribute macros tell ink! what the different parts of your Rust smart contract represent, and ultimately allows ink! to do all the magic needed to create Substrate compatible Wasm bytecodes!
 
 ## Your Turn!
 
