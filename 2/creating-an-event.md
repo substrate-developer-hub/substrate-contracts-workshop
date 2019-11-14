@@ -44,8 +44,6 @@ Note that `value` does not need a `Some()`, as the value is not specified to be 
 
 We want to emit a Foo event every time that a transfer takes place.  In the ERC-20 template that we have been working on, this occurs in two places: first, during the `new` call, and second, every time that `transfer_from_to` is called.
 
-For more examples of event definition and emitting, you can see here: [**click**](https://github.com/paritytech/ink/blob/master/examples/lang/events/src/lib.rs)
-
 ## Your Turn!
 
 Follow the ACTIONs in the template code to emit a `Transfer` event every time a token transfer occurs.
