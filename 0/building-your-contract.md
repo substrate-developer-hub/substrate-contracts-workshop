@@ -10,20 +10,19 @@ cargo contract build
 This special command will turn your ink! project into a Wasm binary which you can deploy to your chain. If all goes well, you should see a `target` folder which contains this `.wasm` file.
 
 ```
-flipper
-|
-+-- target
-    |
-    +-- flipper.wasm
+target
+└── flipper.wasm
 ```
 
 ## Contract Metadata
-By running the next command we'll generate the Application Binary Interface (ABI), or metadata:
+
+By running the next command we'll generate the contract metadata (a.k.a. the contract ABI):
+
 ``` bash
 cargo contract generate-abi
 ```
 
-You should have a new JSON file (`abi.json`) in the same target directory. This is your contract's metadata**. 
+You should have a new JSON file (`abi.json`) in the same target directory: 
 
 ``` bash
 target
@@ -31,82 +30,36 @@ target
 └── abi.json
 ```
 
-Let's take a look inside:
+Let's take a look at the structure inside:
 
 ``` JSON
 {
   "registry": {
-    "strings": [
-      "Flipper",
-      /* --snip-- */
-      "flip",
-      "get",
-      "bool"
-    ],
-    "types": [
-      {
-       /* --snip-- */
-        "id": "bool",
-        "def": "builtin"
-      },
-    /* --snip-- */
-    ]
+    "strings": [...],
+    "types": [...]
   },
-  /* --snip-- */
+  "storage": {...},
   "contract": {
-    "name": 1,
-    "constructors": [
-      {
-        "name": 13,
-        "selector": 0,
-        "args": [],
-        "docs": [
-          "Initializes our state to `false` upon deploying our smart contract."
-        ]
-      }
-    ],
-    "messages": [
-      {
-        "name": 14,
-        "selector": 970692492,
-        "mutates": true,
-        "args": [],
-        "return_type": null,
-        "docs": [
-          "Flips the current state of our smart contract."
-        ]
-      },
-      {
-        "name": 15,
-        "selector": 4266279973,
-        "mutates": false,
-        "args": [],
-        "return_type": {
-          "ty": 3,
-          "display_name": [
-            16
-          ]
-        },
-        "docs": [
-          "Returns the current state."
-        ]
-      }
-    ],
+    "name": ...,
+    "constructors": [...],
+    "messages": [...],
     "events": [],
     "docs": []
   }
 }
 ```
 
-You can see that this file describes the interface that can be used to interact with your contract.
+You can see that this file describes all the interfaces that can be used to interact with your contract.
 
-If there are any deployment variables needed when instantiating a new contract, those will be defined in the `constructors` section. All the public functions your contract exposes can be found in `messages` along with its function name, function parameters, return type, and whether the function is read-only.
+* Registry provides the **strings** and cutom **types** used throughout the rest of the JSON.
+* Storage defines all the **storage** items managed by your contract and how to ultimately access them.
+* Contract stores information about the callable functions like  **constructors** and **messages** a user can call to interact with your contract. It also has helpful information like the **events** that are emitted by the contract or any **docs**.
 
-There is also a `selector` which is a hash of the function name and is used to route your contract calls to the correct function.
+If you look close at the constructors and messages, you will also notice a `selector` which is a 4-byte hash of the function name and is used to route your contract calls to the correct functions.
 
-The Polkadot UI uses this file to generate a friendly interface for deploying and interacting with your contract. :)
+Polkadot-JS Apps uses this file to generate a friendly interface for deploying and interacting with your contract. :)
 
-In the next section we will configure the Polkadot UI.
+In the next section we will configure Polkadot-JS Apps.
 
 ---
 
