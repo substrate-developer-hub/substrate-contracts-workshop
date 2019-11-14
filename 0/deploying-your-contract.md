@@ -28,7 +28,7 @@ In the popup, select a _deployment account_ with some account balance, like `Ali
 
 After you press **Upload** and a new block is formed, a system event is emitted with `contracts.PutCode queued`. This means that the UI is waiting for you to `Sign and Submit` the extrinsic. If the transaction succeeds you will get an `system.ExtrinsicSuccess` event and your WASM contract will be stored on your Substrate blockchain!
 
-> **Note**: If you get a `system.ExtrinsicFailed` error message, you may not have allowed enough gas to execute the call.  You can verify that this is the cause by looking at the logs in the terminal. This may occur on this or any subsequent contract instantiations or calls.  If this occurs, increase the _maximum gas allowed_ argument and try again.
+> **Note:** If you get a `system.ExtrinsicFailed` error message, you may not have allowed enough gas to execute the call.  You can verify that this is the cause by looking at the logs in the terminal. This may occur on this or any subsequent contract instantiations or calls.  If this occurs, increase the _maximum gas allowed_ argument and try again.
 
 ## Creating an Instance of Your Contract
 
