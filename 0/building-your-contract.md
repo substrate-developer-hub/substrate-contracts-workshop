@@ -10,8 +10,11 @@ cargo contract build
 This special command will turn your ink! project into a Wasm binary which you can deploy to your chain. If all goes well, you should see a `target` folder which contains this `.wasm` file.
 
 ```
-target
-└── flipper.wasm
+flipper
+|
++-- target
+    |
+    +-- flipper.wasm
 ```
 
 ## Contract Metadata
