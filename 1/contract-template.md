@@ -33,7 +33,11 @@ Quickly check that it compiles and the trivial test passes with:
 cargo +nightly test
 ```
 
-Also check that you can build the Wasm file by running `cargo contract build`.
+Also check that you can build the Wasm file by running:
+
+```bash
+cargo contract build
+```
 
 If everything looks good, then we are ready to start programming!
 

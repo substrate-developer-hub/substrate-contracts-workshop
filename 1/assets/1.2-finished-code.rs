@@ -23,9 +23,8 @@ mod incrementer {
         }
 
         #[ink(message)]
-        fn get(&self) -> i32 {
-            // Implementation of Contract Function
-            return 0;
+        fn get(&self) {
+            // Contract Message
         }
     }
 
@@ -36,11 +35,6 @@ mod incrementer {
         #[test]
         fn default_works() {
             let contract = Incrementer::default();
-        }
-
-        #[test]
-        fn it_works() {
-            // Test Your Contract
         }
     }
 }

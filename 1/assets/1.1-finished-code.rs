@@ -17,9 +17,9 @@ mod incrementer {
             // Contract Constructor
         }
 
-        #[ink(constructor)]
-        fn default(&mut self) {
-            // Set Default Value Constructor
+        #[ink(message)]
+        fn get(&self) {
+            // Contract Message
         }
 
     }

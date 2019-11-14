@@ -1,6 +1,8 @@
 Storing a Value
 ===
 
+The first thing we are going to do to the contract template is introduce some storage values.
+
 Here is how you would store some simple values in storage:
 
 ```rust
@@ -16,9 +18,13 @@ struct MyContract {
 
 ## Supported Types
 
-Contract storage like `storage::Value<T>` is allowed to be generic over types that are encodable and decodable with [Parity Codec](https://github.com/paritytech/parity-codec) which includes the most common types such as `bool`, `u{16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuples, and arrays.  Note that `u8` is [not currently supported](https://github.com/paritytech/parity-codec/issues/47) in `parity_codec`.
+Contract storage like `storage::Value<T>` is allowed to be generic over types that are encodable and decodable with [Parity Codec](https://github.com/paritytech/parity-codec) which includes the most common types such as `bool`, `u{8,16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuples, and arrays.
 
-ink! also supports Substrate specific types like `AccountId`, `Balance`, and `Hash`. To use some of these non-primitive types, we have to import them from `use ink_core::storage`.
+ink! provides smart contracts Substrate specific types like `AccountId`, `Balance`, and `Hash` as if they were primitive types. Also ink! provides storage types for more elaborate storage interactions through the storage module:
+
+```rust
+use ink_core::storage::{Value, Vec, HashMap, BTreeMap, Heap, Stash, Bitvec};
+```
 
 Here is an example of how you would store an `AccountId` and `Balance`:
 
@@ -42,7 +48,7 @@ mod mycontract {
 }
 ```
 
-You can find all the supported Substrate types in the [`core/env/traits.rs` file](https://github.com/paritytech/ink/blob/master/core/src/env/traits.rs).
+You can find all the supported Substrate types in [`core/env/traits.rs`](https://github.com/paritytech/ink/blob/master/core/src/env/traits.rs).
 
 ## Initializing Storage
 
@@ -59,11 +65,11 @@ self.my_account.set(AccountId::from([0x0; 32]));
 self.my_balance.set(1337);
 ```
 
-This can be done anywhere in our contract logic, but most commonly this happens by using the `[ink(constructor)]` attribute.
+This can be done anywhere in our contract logic, but most commonly this happens by using the `#[ink(constructor)]` attribute.
 
 ## Contract Deployment
 
-Every ink! smart contract must have a contructor which is run once when a contract is created. ink! smart contracts can have many different constructors, it is not limited to only one.
+Every ink! smart contract must have a constructor which is run once when a contract is created. ink! smart contracts can have multiple different constructors:
 
 ```rust
 use ink_core::storage;
@@ -90,8 +96,6 @@ mod mycontract {
     }
 }
 ```
-
-> **Note:** If you are familiar with Solidity, this is similar to the `constructor` function, however in ink!, it is not optional.
 
 ## Your Turn!
 
