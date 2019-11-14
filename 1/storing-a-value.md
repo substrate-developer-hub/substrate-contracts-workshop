@@ -97,8 +97,6 @@ mod mycontract {
 
 Follow the `ACTION`s in the template.
 
-TODO: Add more content.
-
 Remember to run `cargo +nightly test` to test your work.
 
 <!-- tabs:start -->

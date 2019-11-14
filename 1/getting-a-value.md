@@ -130,8 +130,6 @@ These are simply debugging utilities, so they will only deploy to `--dev` nodes.
 
 Follow the `ACTION`s on the code template provided.
 
-TODO: Make this better.
-
 Remember to run `cargo +nightly test` to test your work.
 
 <!-- tabs:start -->

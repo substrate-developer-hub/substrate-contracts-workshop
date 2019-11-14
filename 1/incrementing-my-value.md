@@ -11,7 +11,8 @@ But have no fear, we can continue to use the `my_number_or_zero` function we cre
 
 ```rust
 mod mycontract {
-    ...
+    
+    /* --snip-- */
 
     // Set the value for the calling AccountId
     #[ink(message)]
@@ -26,10 +27,7 @@ mod mycontract {
         let caller = self.env().caller();
         let my_number = self.my_number_or_zero(&caller);
         self.my_number_map.insert(caller, my_number + value);
-    }
-}
 
-mod mycontract {
     /// Returns the number for an AccountId or 0 if it is not set.
     fn my_number_or_zero(&self, of: &AccountId) -> u32 {
         let value = self.my_number_map.get(of).unwrap_or(&0);
