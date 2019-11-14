@@ -21,22 +21,6 @@ struct Foo {
 ```
 
 This `Foo` event will contain three pieces of data - a value of type `Balance` and two Option-wrapped `AccountId` variables indicating the `from` and `to` accounts. For faster access to the event data they can have indexed fields. We can do this by using the `#[ink(topic)]` attribute. 
-Before we move on, let's discuss what these `Option` variables mean.
-
-## Understanding Option, Some, and None
-
-If you have used another programming language such as Java or C, you may remember the fun of wondering if a particular object reference is `null` or actually points to an object of the type specified.  In Rust, this problem is ameliorated; if the code states that there is a reference to a `Foo` object, then it will reference a `Foo` object and not `null`.
-
-However, we often still want the ability to express "no value" for a given variable.  We just don't it to be a surprise to the programmer!  To express the concept of "there may or may not be a valid object here", we can use `Option`.  `Option<T>` indicates that there may or may not be an object being referred to; it's kind of like an indicator at compile-time that a null-check should occur.
-
-If a value does exist for that variable, we can set it with `Some(value)`.  If a value does not exist, we can mark it `None`.  Receivers who deal with the emitted event are then forced to check if the data actually exists and decide what to do if it doesn't.  This may sound like extra work, but considering dereferencing a null reference will cause a panic, it's well worth it!
-
-```rust
-// a is storing an actual value, 1
-let a: Option<u32> = Some(1);
-// b does not have a value
-let b: Option<u32> = None;
-```
 
 One way of retrieving data from an Option<T> variable is using the `.unwrap_or()` function.  You may recall using this in the `my_value_or_zero()` and `balance_of_or_zero()` functions in this project and the Incrementer project.  
 
