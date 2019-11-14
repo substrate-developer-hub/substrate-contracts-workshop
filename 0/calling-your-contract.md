@@ -7,19 +7,19 @@ Now that your contract has been fully deployed, we can start to interact with it
 
 If you take a look back at our contract's `on_deploy()` function, we set the initial value of the Flipper contract to `false`. Let's check that this is the case.
 
-In the **Call** section, set the _message to send_ to `get(): bool`. Set the _maximum gas allowed_ to `500,000`.
+In the **Contracts** section, press the "execute" button:
 
 ![An image of the Contracts call page](./assets/flipper-call-page.png)
 
-We can call our ink! contract through the RPC to read the contract's storage. ink! also provides an alternative debugging tool for our smart contracts by printing the messages in the node's terminal.
+Set the _message to send_ to `get(): bool`. Set the _maximum gas allowed_ to `500,000`.
 
-After calling the contract storage through the RPC, we can get the latest value:
+When you press "Call" you will see it returns the value `false`:
 
 ![An image of Flipper RPC call with false](./assets/flipper-false.png)
 
-> **Note:** `self.env().println` is only allowed on `--dev` chains for debugging purposes. If you try to deploy a contract with `self.env().println` on a non-dev chain, it will not succeed.
+You might wonder: "Why did we need to specify gas when reading a value from a contract?"
 
-While this is not a great long term solution, it works very well for debugging contracts, and is a placeholder for more mature solutions like contract events and dedicated view RPCs which are still under development.
+
 
 ## flip()
 
