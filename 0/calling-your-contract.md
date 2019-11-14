@@ -17,9 +17,9 @@ When you press "Call" you will see it returns the value `false`:
 
 ![An image of Flipper RPC call with false](./assets/flipper-false.png)
 
-You might wonder: "Why did we need to specify gas when reading a value from a contract?"
-
-
+> NOTE: You might be wondering: "Why did we need to specify gas when reading a value from a contract?"
+> 
+> If you notice right above the "Call" button is a toggle which allows you to "send call as transaction" or "send as RPC call". For a read-only request like this, we can simply use an RPC call which will _simulate_ a transaction, but not actually store anything on-chain. Thus, you will still need to specify the right amount of gas to cover your "virtual fee", but don't worry, nothing will be charged when making a call this way. :)
 
 ## flip()
 
