@@ -32,11 +32,6 @@ mod incrementer {
             // ACTION: Simply increment `*self.value` by `by`
             //   HINT: Because the value is already initialized, you can do `+=`
         }
-
-        fn my_value_or_zero(&self, of: &AccountId) -> u64 {
-            // ACTION: `get` the value of `of` and `unwrap_or` return 0
-            // ACTION: Return the value at the end
-        }
     }
 
     #[cfg(test)]

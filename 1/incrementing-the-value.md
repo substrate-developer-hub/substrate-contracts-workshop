@@ -13,7 +13,6 @@ If you are simply _reading_ from the contract storage, you only need to pass `&s
 mod mycontract {
     #[ink(message)]
     fn my_getter(&self) -> u32 {
-        self.env().println(&format!("my_number is {:?}", *self.my_number));
         *self.my_number
     } 
 
@@ -26,7 +25,7 @@ mod mycontract {
 
 ## Modifying a Storage Value
 
-You can always update the value of a storage item by called `set` again as we showed above.
+You can always update the value of a storage item by calling `set` again.
 
 However, if you know the value is already set, then you can modify the value in a more ergonomic way:
 
@@ -34,7 +33,7 @@ However, if you know the value is already set, then you can modify the value in 
 mod mycontract {
     #[ink(message)]
     fn my_setter(&mut self, new_value: u32) {
-        self.my_number = new_value;
+        self.my_number.set(new_value);
     }
 
     #[ink(message)]
@@ -44,7 +43,7 @@ mod mycontract {
 }
 ```
 
-However, if the value is not initialized, your contract will compile fine, but will panic during contract execution! We really cannot understate how easy it is to make mistakes this way.
+However, if the value is not initialized, your contract will compile fine, but will panic during contract execution! **We really cannot understate how easy it is to make mistakes this way.**
 
 ## Your Turn
 
