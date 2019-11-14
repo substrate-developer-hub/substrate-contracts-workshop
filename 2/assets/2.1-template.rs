@@ -18,7 +18,7 @@ mod erc20 {
         #[ink(constructor)]
         fn new(&mut self, initial_supply: Balance) {
             // ACTION: `set` the total supply to `init_value`
-            // ACTION: `insert` the `init_value` as the `self.env().caller()` balance
+            // ACTION: `insert` the `init_value` as the `caller` balance
         }
 
         #[ink(message)]
@@ -33,10 +33,9 @@ mod erc20 {
         }
 
         fn balance_of_or_zero(&self, owner: &AccountId) -> Balance {
-            // ACTION: `get` the balance of `of`, then `unwrap_or` fallback to 0
+            // ACTION: `get` the balance of `owner`, then `unwrap_or` fallback to 0
             // ACTION: Return the balance
         }
-
     }
 
     #[cfg(test)]
@@ -53,6 +52,7 @@ mod erc20 {
         fn balance_works() {
             let contract = Erc20::new(100);
             assert_eq!(contract.total_supply(), 100);
+            assert_eq!(contract.balance_of(AccountId::from([0x0; 32])), 100);
             assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 0);
         }
     }
