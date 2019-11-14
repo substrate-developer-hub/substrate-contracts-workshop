@@ -27,7 +27,7 @@ So let's make the value turn `true` now!
 
 The alternative _message to send_ we can make with the UI is `flip()`. Again, set the _maximum gas allowed_ to `500,000`.
 
-If the extrinsic was successful, we should then be able to go back to the `get()` function and see our updated storage:
+You will notice that this call actually sends a transaction. If the transaction was successful, we should then be able to go back to the `get()` function and see our updated storage:
 
 ![An image of Flipper RPC call with true](./assets/flipper-true.png)
 
