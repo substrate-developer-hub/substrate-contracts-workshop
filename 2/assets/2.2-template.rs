@@ -34,17 +34,17 @@ mod erc20 {
 
         #[ink(message)]
         fn transfer(&mut self, to: AccountId, value: Balance) -> bool {
-             // ACTION: Call the `transfer_impl` with `from` as `self.env().caller()`
+             // ACTION: Call the `transfer_from_to` with `from` as `self.env().caller()`
         }
 
         fn transfer_from_to(&mut self, from: AccountId, to: AccountId, value: Balance) -> bool {
             // ACTION: Get the balance for `from` and `to`
             //   HINT: Use the `balance_of_or_zero` function to do this
-            // ACTION: If `balance` from is less than `value`, return `false`
+            // ACTION: If `from_balance` is less than `value`, return `false`
             // ACTION: Insert new values for `from` and `to`
-            //         * balance_from - value
-            //         * balance_to + value
-            true
+            //         * from_balance - value
+            //         * to_balance + value
+            // ACTION: Return `true`
         }
 
         fn balance_of_or_zero(&self, owner: &AccountId) -> Balance {
@@ -74,8 +74,9 @@ mod erc20 {
         fn transfer_works() {
             let mut contract = Erc20::new(100);
             assert_eq!(contract.balance_of(AccountId::from([0x0; 32])), 100);
-            contract.transfer(AccountId::from([0x1; 32]), 10);
+            assert!(contract.transfer(AccountId::from([0x1; 32]), 10));
             assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 10);
+            assert!(!contract.transfer(AccountId::from([0x1; 32]), 100));
         }
     }
 }

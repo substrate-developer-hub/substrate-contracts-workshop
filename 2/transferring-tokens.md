@@ -1,7 +1,9 @@
 Transferring Tokens
 ===
 
-So at this point, we have a single user which owns all the tokens for the contract. However, it's not _really_ a token unless you can transfer them to other people... Let's do that!
+So at this point, we have a single user that owns all the tokens for the contract. However, it's not _really_ a useful token unless you can transfer them to other people...
+
+Let's do that!
 
 ## The Transfer Function
 
@@ -15,7 +17,9 @@ You will notice in our template code there is a public function `transfer` and a
 fn transfer_from_to(&mut self, from: AccountId, to: AccountId, value: Balance) -> bool {/* --snip-- */}
 ```
 
-The `transfer_from_to` function will be built without any _authorization_ checks. Because it is an internal function, we fully control when it gets called. However, it will have all logical checks around managing the balances between accounts, and really we just need to check for one thing: make sure that the `from` account has enough funds to send to the `to` account:
+The `transfer_from_to` function will be built without any _authorization_ checks. Because it is an internal function, we fully control when it gets called. However, it will have all logical checks around managing the balances between accounts.
+
+Really we just need to check for one thing: make sure that the `from` account has enough funds to send to the `to` account:
 
 ```rust
 if balance_from < value {
