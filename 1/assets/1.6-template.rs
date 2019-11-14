@@ -40,9 +40,9 @@ mod incrementer {
 
         #[ink(message)]
         fn inc_mine(&mut self, by: u64) {
-            // ACTION: Get `my_value` that belongs to `self.env().caller()` by using the getter.
-            // ACTION: Insert or mutate the value `(value + by)` back into the mapping.
-            //  HINT: If the value exists you only need to update it with `mutate_with`.
+            // ACTION: Get the `caller` of this function.
+            // ACTION: Get `my_value` that belongs to `caller` by using `my_value_or_zero`.
+            // ACTION: Insert the incremented `value` back into the mapping.
         }
 
         fn my_value_or_zero(&self, of: &AccountId) -> u64 {
@@ -72,9 +72,14 @@ mod incrementer {
         
         #[test]
         fn my_value_works() {
-            let contract = Incrementer::new(11);
+            let mut contract = Incrementer::new(11);
             assert_eq!(contract.get(), 11);
             assert_eq!(contract.get_mine(), 0);
+            contract.inc_mine(5);
+            assert_eq!(contract.get_mine(), 5);
+            contract.inc_mine(10);
+            assert_eq!(contract.get_mine(), 15);
+            
         }
     }
 }

@@ -35,21 +35,14 @@ mod incrementer {
 
         #[ink(message)]
         fn get_mine(&self) -> u64 {
-            let caller = self.env().caller();
-            self.my_value_or_zero(&caller)
+            self.my_value_or_zero(&self.env().caller())
         }
 
         #[ink(message)]
         fn inc_mine(&mut self, by: u64) {
             let caller = self.env().caller();
-            match self.my_value.get(&caller) {
-                Some(_) => {
-                    self.my_value.mutate_with(&caller, |value| *value += by);
-                }
-                None => {
-                    self.my_value.insert(caller, by);
-                }
-            };
+            let my_value = self.my_value_or_zero(&caller);
+            self.my_value.insert(caller, my_value + by);
         }
 
         fn my_value_or_zero(&self, of: &AccountId) -> u64 {

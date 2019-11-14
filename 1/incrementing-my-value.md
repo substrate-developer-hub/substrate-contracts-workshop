@@ -27,7 +27,8 @@ mod mycontract {
         let caller = self.env().caller();
         let my_number = self.my_number_or_zero(&caller);
         self.my_number_map.insert(caller, my_number + value);
-
+    }
+    
     /// Returns the number for an AccountId or 0 if it is not set.
     fn my_number_or_zero(&self, of: &AccountId) -> u32 {
         let value = self.my_number_map.get(of).unwrap_or(&0);
