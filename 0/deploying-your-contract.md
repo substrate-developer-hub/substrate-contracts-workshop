@@ -20,7 +20,9 @@ With your Substrate development node running, you can go back to the [Polkadot U
 
 Open the specially designed **Contracts** section of the UI.
 
-In the **Code** section, select a _deployment account_ with some account balance like `Alice`. In _compiled contract WASM_, select the `flipper.wasm` file we generated. For the _contract ABI_, select the JSON file. Finally, set the _maximum gas allowed_ to `500,000` units.
+In the **Code** section, select "Upload Wasm".
+
+In the popup, select a _deployment account_ with some account balance, like `Alice`. In _compiled contract WASM_, select the `flipper.wasm` file we generated. For the _contract ABI_, select the JSON file. Finally, set the _maximum gas allowed_ to `500,000` units.
 
 ![Contracts code page for deploying Flipper](./assets/flipper-code-page.png)
 
@@ -32,11 +34,9 @@ After you press **Upload** and a new block is formed, a system event is emitted 
 
 Smart contracts exist as an extension of the account system on the blockchain. Thus creating an instance of this contract will create a new `AccountId` which will store any balance managed by the smart contract and allow us to interact with the contract.
 
-You will notice on the **Code** tab there is a new object that represents our smart contract. We now need to deploy our smart contract to create an **instance**.
+You will notice on the **Code** tab there is a new object that represents our smart contract. We now need to deploy our smart contract to create an **instance**. Press the "Deploy" button on the flipper contract:
 
 ![An image of the Contracts Instance Page](./assets/flipper-instance-page.png)
-
-The _code for this contract_ is automatically set to the last contract you published. You would be able to choose from a drop down of previous contracts if you created others in the past.
 
 To instantiate our contract we just need to give this contract account an _endowment_ of `10,000,000` and again set the _maximum gas allowed_ to `500,000` units. 
 
