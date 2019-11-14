@@ -113,18 +113,18 @@ mod flipper {
 }
 ```
 
-You can see that `env.println` in combination with `format!` can allow you to make verbose, content rich messages which you will be able to access from your Substrate node terminal.
+You can see that `self.env().println` in combination with `format!` can allow you to make verbose, content rich messages which you will be able to access from your Substrate node terminal.
 
 ![An image of println in the terminal for Flipper with false](../0/assets/flipper-println-false.png)
 
-You automatically gain access to `env.println` whenever you write an `ink!` contract. To access `format!`, you need to import it from `ink_core`:
+You automatically gain access to `self.env().println` whenever you write an `ink!` contract. To access `format!`, you need to import it from `ink_core`:
 
 ```rust
 use ink_core::memory::format,
 }
 ```
 
-These are simply debugging utilities, so they will only deploy to `--dev` nodes. If you try to deploy a contract with `env.println` to a production chain, the Contracts module will reject it. However, for learning purposes, we can use them freely.
+These are simply debugging utilities, so they will only deploy to `--dev` nodes. If you try to deploy a contract with `self.env().println` to a production chain, the Contracts module will reject it. However, for learning purposes, we can use them freely.
 
 ## Your Turn!
 

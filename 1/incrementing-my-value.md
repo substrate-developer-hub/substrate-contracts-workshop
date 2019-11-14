@@ -11,7 +11,7 @@ But have no fear, we can continue to use the `my_number_or_zero` function we cre
 
 ```rust
 mod mycontract {
-    
+
     /* --snip-- */
 
     // Set the value for the calling AccountId
@@ -40,8 +40,37 @@ Here we have written two kinds of functions which modify a HashMap. One which si
 
 ## Feel the Pain (Optional)
 
-We will not always have an existing value on our contract's storage. We can take advantage of the Rust Option<> type to help use on this task.
+We will not always have an existing value on our contract's storage. We can take advantage of the Rust `Option<T>` type to help use on this task.
 If there's no value on the contract storage we will insert a new one; On the contrary if there is an existing value we will only update it.
+
+Before we move on, let's discuss what these `Option` variables mean.
+
+## Understanding Option, Some, and None
+
+If you have used another programming language such as Java or C, you may remember the fun of wondering if a particular object reference is `null` or actually points to an object of the type specified.  In Rust, this problem is ameliorated; if the code states that there is a reference to a `Foo` object, then it will reference a `Foo` object and not `null`.
+
+However, we often still want the ability to express "no value" for a given variable.  We just don't it to be a surprise to the programmer!  To express the concept of "there may or may not be a valid object here", we can use `Option`.  `Option<T>` indicates that there may or may not be an object being referred to; it's kind of like an indicator at compile-time that a null-check should occur.
+
+If a value does exist for that variable, we can set it with `Some(value)`.  If a value does not exist, we can mark it `None`.  Receivers who deal with the emitted event are then forced to check if the data actually exists and decide what to do if it doesn't.  This may sound like extra work, but considering dereferencing a null reference will cause a panic, it's well worth it!
+
+```rust
+// a is storing an actual value, 1
+let a: Option<u32> = Some(1);
+// b does not have a value
+let b: Option<u32> = None;
+```
+
+A Rust `Option` can be unwrapped to get the encapsulated value from the `Some` case or set a default value.
+```rust
+// Since a has a value Some(1), the 1 will be "unwrapped" and placed in c
+let c = a.unwrap_or(&0);
+// Since b has a value None, the default value 0 will be placed in d
+let d = b.unwrap_or(&0);
+```
+
+Note that there other ways to interact with `Option` variables.  You can find more information in the Rust language docs here: https://doc.rust-lang.org/std/option/enum.Option.html
+
+ink! HashMaps getters return an `Option<T>` that we can use to identify if there is an existing value on our storage.
 
 ```rust
 let caller = self.env().caller();

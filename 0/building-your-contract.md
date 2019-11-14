@@ -65,8 +65,6 @@ In the next section we will configure Polkadot-JS Apps.
 
 **Learn More**
 
-> ** ABI generation has a temporary [bug](https://github.com/paritytech/ink/issues/222#issuecomment-549829912).
-
 ink! provides a built-in overflow protection enabled on our `Cargo.toml` file. It is __recommended__ to keep it enabled as a security mechanism.
 ```
 [profile.release]

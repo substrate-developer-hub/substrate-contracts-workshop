@@ -11,12 +11,14 @@ If you are simply _reading_ from the contract storage, you only need to pass `&s
 
 ```rust
 mod mycontract {
-    pub(external) fn my_getter(&self) -> u32 {
-        env.println(&format!("my_number is {:?}", *self.my_number));
+    #[ink(message)]
+    fn my_getter(&self) -> u32 {
+        self.env().println(&format!("my_number is {:?}", *self.my_number));
         *self.my_number
     } 
 
-    pub(external) fn my_setter(&mut self, new_value: u32) {
+    #[ink(message)]
+    fn my_setter(&mut self, new_value: u32) {
         self.my_number.set(new_value);
     }
 }
@@ -30,11 +32,13 @@ However, if you know the value is already set, then you can modify the value in 
 
 ```rust
 mod mycontract {
-    pub(external) fn my_setter(&mut self, new_value: u32) {
+    #[ink(message)]
+    fn my_setter(&mut self, new_value: u32) {
         self.my_number = new_value;
     }
 
-    pub(external) fn my_adder(&mut self, add_value: u32) {
+    #[ink(message)]
+    fn my_adder(&mut self, add_value: u32) {
         self.my_number += add_value;
     }
 }
