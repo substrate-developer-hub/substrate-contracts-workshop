@@ -11,6 +11,12 @@ cargo contract new flipper
 
 This command will create a new project folder named `flipper` which we will explore:
 
+```bash
+cd flipper/
+```
+
+**ink! Contract Project**
+
 ```
 flipper
 |

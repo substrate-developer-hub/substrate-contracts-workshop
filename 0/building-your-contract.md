@@ -1,11 +1,13 @@
 Building Your Contract
 ===
 
-To compile the smart contract, we need to run it:
+Run the following command to compile your smart contract:
 
 ```bash
 cargo contract build
 ```
+
+This special command will turn your ink! project into a Wasm binary which you can deploy to your chain.
 
 If all goes well, you should see a `target` folder being created with 5 relevant files corresponding to the steps in the script:
 
