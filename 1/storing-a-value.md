@@ -34,7 +34,7 @@ use ink_core::storage;
 use ink_lang2 as ink;
 
 #[ink::contract(version = "0.1.0")]
-mod mycontract {
+impl MyContract {
 
     // Our struct will use those default SRML types
     #[ink(storage)]
@@ -76,7 +76,7 @@ use ink_core::storage;
 use ink_lang2 as ink;
 
 #[ink::contract(version = "0.1.0")]
-mod mycontract {
+impl MyContract {
     #[ink(storage)]
     struct MyContract {
         number: storage::Value<u32>,

@@ -8,7 +8,7 @@ Now that we have created and initialized a storage value, we are going to start 
 As you can see in the contract template, all of your contract functions are part of your contract module.
 
 ```rust
-mod mycontract {
+impl MyContract {
     // Public and Private functions can go here
 }
 ```
@@ -18,7 +18,7 @@ mod mycontract {
 In Rust, you can make as many implementations as you want. As a stylistic choice, we recommend breaking up your implementation definitions for your private and public functions:
 
 ```rust
-mod mycontract {
+impl MyContract {
     /// Public function
     #[ink(message)]
     fn my_public_function(&self) {
@@ -73,7 +73,7 @@ In that same file, you can find the other APIs exposed by storage values, howeve
 We already showed you how to use `set` when we initialized the storage value. Getting the value is just as simple:
 
 ```rust
-mod mycontract {
+impl MyContract {
     #[ink(message)]
     fn my_getter(&self) -> u32 {
         let number = *self.my_number.get();
@@ -87,7 +87,7 @@ You should take notice that the `get` API returns a _reference_ to the value, so
 You can also drop `.get()` to implicitly get the value:
 
 ```rust
-mod mycontract {
+impl MyContract {
     #[ink(message)]
     fn my_getter(&self) -> u32 {
         *self.my_number

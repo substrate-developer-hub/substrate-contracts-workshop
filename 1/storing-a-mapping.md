@@ -64,7 +64,7 @@ use ink_core::storage;
 use ink_lang2 as ink;
 
 #[ink::contract(version = "0.1.0")]
-mod mycontract {
+impl MyContract {
     
     #[ink(storage)]
     struct MyContract {
@@ -93,7 +93,7 @@ use ink_core::storage;
 use ink_lang2 as ink;
 
 #[ink::contract(version = "0.1.0")]
-mod mycontract {
+impl MyContract {
     
     #[ink(storage)]
     struct MyContract {
@@ -140,7 +140,7 @@ use ink_core::storage;
 use ink_lang2 as ink;
 
 #[ink::contract(version = "0.1.0")]
-mod mycontract {
+impl MyContract {
     
     #[ink(storage)]
     struct MyContract {
