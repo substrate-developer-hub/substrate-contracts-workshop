@@ -7,16 +7,12 @@ Run the following command to compile your smart contract:
 cargo contract build
 ```
 
-This special command will turn your ink! project into a Wasm binary which you can deploy to your chain.
-
-If all goes well, you should see a `target` folder being created with 5 relevant files corresponding to the steps in the script:
+This special command will turn your ink! project into a Wasm binary which you can deploy to your chain. If all goes well, you should see a `target` folder which contains this `.wasm` file.
 
 ```
 target
 └── flipper.wasm
 ```
-
-The final, optimized `flipper.wasm` file is what we will actually deploy to our Substrate chain.
 
 ## Contract Metadata
 By running the next command we'll generate the Application Binary Interface (ABI), or metadata:
