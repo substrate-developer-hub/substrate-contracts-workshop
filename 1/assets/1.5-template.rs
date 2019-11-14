@@ -9,7 +9,7 @@ mod incrementer {
     #[ink(storage)]
     struct Incrementer {
         value: storage::Value<i32>,
-        my_value: storage::HashMap<AccountId, u64>,
+        // ACTION: Add a `HashMap` from `AccountId` to `u64` named `my_value`
     }
 
     impl Incrementer {

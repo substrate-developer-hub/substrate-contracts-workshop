@@ -45,7 +45,7 @@ If there's no value on the contract storage we will insert a new one; On the con
 
 Before we move on, let's discuss what these `Option` variables mean.
 
-## Understanding Option, Some, and None
+### Understanding Option, Some, and None
 
 If you have used another programming language such as Java or C, you may remember the fun of wondering if a particular object reference is `null` or actually points to an object of the type specified.  In Rust, this problem is ameliorated; if the code states that there is a reference to a `Foo` object, then it will reference a `Foo` object and not `null`.
 

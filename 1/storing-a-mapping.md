@@ -72,7 +72,8 @@ mod mycontract {
         my_number_map: storage::HashMap<AccountId, u32>,
     }
 
-    /// Private funtion. Returns the number for an AccountId or 0 if it is not set.
+    /// Private function.
+    /// Returns the number for an AccountId or 0 if it is not set.
     fn my_number_or_zero(&self, of: &AccountId) -> u32 {
         let balance = self.my_number_map.get(of).unwrap_or(&0);
         *balance
@@ -80,7 +81,7 @@ mod mycontract {
 }
 ```
 
-Here we see that after we `get` the value from `my_number_map` we call `unwrap_or` which will either `unwrap` the value stored in storage, _or_ if there is no value, return some known value. Then, when building functions that interact with this HashMap, you need to always remember to call this function rather than getting the value directly.
+Here we see that after we `get` the value from `my_number_map` we call `unwrap_or` which will either `unwrap` the value stored in storage, _or_ if there is no value, return some known value. Then, when building functions that interact with this HashMap, you need to always remember to call this function rather than getting the value directly from storage.
 
 Here is an example:
 
@@ -127,9 +128,9 @@ mod mycontract {
 
 As you might have noticed in the example above, we use a special function called `self.env().caller()`. This function is available throughout the contract logic and will always return to you the contract caller.
 
-> **NOTE:** The contract caller is not the same as the origin caller. If a user triggers a contract which then calls a subsequent contract, the `self.env().caller()` in the second contract will be the address of the first contract, not the original user. Today, we cannot make contract to contract calls, but this will be added in the future, and we may elaborate on these details at that time.
+> **NOTE:** The contract caller is not the same as the origin caller. If a user triggers a contract which then calls a subsequent contract, the `self.env().caller()` in the second contract will be the address of the first contract, not the original user.
 
-`self.env().caller()` can be used a number of different ways. In the examples above, we are basically creating an "access control" layer which allows a user to modify their own value, but no one else can. You can also do things like define a contract owner during contract deployment:
+`self.env().caller()` can be used a number of different ways. In the examples above, we are basically creating an "access control" layer which allows a user to modify their own value, but no one else. You can also do things like define a contract owner during contract deployment:
 
 ```rust
 #![feature(proc_macro_hygiene)]
