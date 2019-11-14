@@ -30,9 +30,7 @@ flipper
 |       +-- Cargo.toml   
 |       +-- main.rs       <-- ABI Generator
 |
-+-- src
-|   |
-|   +-- lib.rs            <-- Contract Source Code
++-- lib.rs                <-- Contract Source Code
 |
 +-- Cargo.toml            <-- Rust Dependencies and ink! Configuration
 |
