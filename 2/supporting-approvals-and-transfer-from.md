@@ -39,7 +39,8 @@ Here we have defined the tuple to represent `(owner, spender)` such that we can 
 ```rust
 /// Approve the passed AccountId to spend the specified amount of tokens
 /// on the behalf of the message's sender.
-pub(external) fn approve(&mut self, spender: AccountId, value: Balance) -> bool {...}
+#[ink(message)] 
+fn approve(&mut self, spender: AccountId, value: Balance) -> bool {/* --snip-- */}
 ```
 
 When you call the `approve` function, you simply insert the `value` specified into storage. The `owner` is always the `self.env().caller()`, ensuring that the function call is always authorized.

@@ -28,7 +28,8 @@ Remember that the `transfer` function and other public functions return a bool t
 ### transfer()
 
 ```rust
-pub(external) fn transfer(&mut self, to: AccountId, value: Balance) -> bool {...}
+#[ink(message)] 
+fn transfer(&mut self, to: AccountId, value: Balance) -> bool {/* --snip-- */}
 ```
 
 Finally, the `transfer` function will simply call into the `transfer_from_to` with the `from` parameter automatically set to the `self.env().caller()`. This is our "authorization check" since the contract caller is always authorized to move their own funds.
@@ -44,8 +45,6 @@ There really is not much to say about the simple math executed within a token tr
 ## Your Turn!
 
 Follow the `ACTION`s in the template code to build your transfer function.
-
-TODO: make this better.
 
 Remember to run `cargo +nightly test` to test your work.
 
