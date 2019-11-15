@@ -15,7 +15,7 @@ Well, rather than giving your tokens directly to the contract (an escrow), you c
 
 So hopefully you can see why a feature like this would be useful, but how can we do it safely?
 
-We use a two step process: Approve and Transfer From.
+We use a two step process: **Approve** and **Transfer From**.
 
 ### Approve
 
@@ -23,7 +23,7 @@ Approving another account to spend your funds is the first step in the third par
 
 When an account calls `approve` multiple times, the approved value simply overwrites any existing value that was approved in the past. By default, the approved value between any two accounts is `0`, and a user can always call approve for `0` to revoke access to their funds from another account.
 
-To store approvals in our contract, we need to use a slightly fancy HashMap.
+To store approvals in our contract, we need to use a slightly fancy `HashMap`.
 
 Since each account can have a different amount approved for any other account to use, we need to use a tuple as our key which simply points to a balance value. Here is an example of what that would look like:
 
@@ -34,7 +34,7 @@ struct Erc20 {
 }
 ```
 
-Here we have defined the tuple to represent `(owner, spender)` such that we can look up how much a "spender" can spend from an "owner's" balance using they `AccountId`s in this tuple. Remember that we will need to again create an `allowance_of_or_zero` function to help us get the allowance of an account when it is not initialized, and a getter function called `allowance` to look up the current value for any pair of accounts.
+Here we have defined the tuple to represent `(owner, spender)` such that we can look up how much a "spender" can spend from an "owner's" balance using the `AccountId`s in this tuple. Remember that we will need to again create an `allowance_of_or_zero` function to help us get the allowance of an account when it is not initialized, and a getter function called `allowance` to look up the current value for any pair of accounts.
 
 ```rust
 /// Approve the passed AccountId to spend the specified amount of tokens
