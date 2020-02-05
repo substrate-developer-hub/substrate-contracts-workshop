@@ -133,19 +133,19 @@ mod erc20 {
         #[test]
         fn transfer_works() {
             let mut contract = Erc20::new(100);
-            assert_eq!(contract.balance_of(AccountId::from([0x0; 32])), 100);
-            assert!(contract.transfer(AccountId::from([0x1; 32]), 10));
-            assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 10);
-            assert!(!contract.transfer(AccountId::from([0x1; 32]), 100));
+            assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 100);
+            assert!(contract.transfer(AccountId::from([0x0; 32]), 10));
+            assert_eq!(contract.balance_of(AccountId::from([0x0; 32])), 10);
+            assert!(!contract.transfer(AccountId::from([0x0; 32]), 100));
         }
 
         #[test]
         fn transfer_from_works() {
             let mut contract = Erc20::new(100);
-            assert_eq!(contract.balance_of(AccountId::from([0x0; 32])), 100);
-            contract.approve(AccountId::from([0x0; 32]), 20);
-            contract.transfer_from(AccountId::from([0x0; 32]), AccountId::from([0x1; 32]), 10);
-            assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 10);
+            assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 100);
+            contract.approve(AccountId::from([0x1; 32]), 20);
+            contract.transfer_from(AccountId::from([0x1; 32]), AccountId::from([0x0; 32]), 10);
+            assert_eq!(contract.balance_of(AccountId::from([0x0; 32])), 10);
         }
     }
 }

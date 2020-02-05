@@ -60,7 +60,7 @@ For storage values like the ones above, we can set an initial value with:
 ```rust
 self.my_bool.set(false);
 self.my_number.set(42);
-self.my_account.set(AccountId::from([0x0; 32]));
+self.my_account.set(AccountId::from([0x1; 32]));
 self.my_balance.set(1337);
 ```
 
