@@ -61,7 +61,7 @@ So given `my_number_map`, imagine we wanted the default value for any given key 
 #![cfg_attr(not(feature = "std"), no_std)]
 
 use ink_core::storage;
-use ink_lang2 as ink;
+use ink_lang as ink;
 
 #[ink::contract(version = "0.1.0")]
 mod mycontract {
@@ -92,7 +92,7 @@ Here is an example:
 #![cfg_attr(not(feature = "std"), no_std)]
 
 use ink_core::storage;
-use ink_lang2 as ink;
+use ink_lang as ink;
 
 #[ink::contract(version = "0.1.0")]
 mod mycontract {
@@ -141,7 +141,7 @@ As you might have noticed in the example above, we use a special function called
 #![cfg_attr(not(feature = "std"), no_std)]
 
 use ink_core::storage;
-use ink_lang2 as ink;
+use ink_lang as ink;
 
 #[ink::contract(version = "0.1.0")]
 mod mycontract {
