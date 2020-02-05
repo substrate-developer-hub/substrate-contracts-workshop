@@ -30,7 +30,6 @@ Here is an example of how you would store an `AccountId` and `Balance`:
 
 ```rust
 // We are importing the default PALETTE types
-use ink_core::storage;
 use ink_lang as ink;
 
 #[ink::contract(version = "0.1.0")]
@@ -72,7 +71,6 @@ This can be done anywhere in our contract logic, but most commonly this happens 
 Every ink! smart contract must have a constructor which is run once when a contract is created. ink! smart contracts can have multiple different constructors:
 
 ```rust
-use ink_core::storage;
 use ink_lang as ink;
 
 #[ink::contract(version = "0.1.0")]
