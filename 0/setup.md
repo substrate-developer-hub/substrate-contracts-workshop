@@ -17,7 +17,7 @@ curl https://getsubstrate.io -sSf | bash -s -- --fast
 rustup target add wasm32-unknown-unknown --toolchain stable
 rustup component add rust-src --toolchain nightly
 ```
-If you are using another operating system, like __Windows__, follow the [installation instructions](https://substrate.dev/docs/en/getting-started/installing-substrate#windows) on the Substrate Developer Hub.
+If you are using another operating system, like __Windows__, follow the [installation instructions](https://substrate.dev/docs/en/knowledgebase/getting-started/windows-users) on the Substrate Developer Hub.
 
 ## Installing Substrate
 
@@ -46,4 +46,3 @@ cargo install cargo-contract --vers 0.6.1 --force
 
 You can then use `cargo contract --help` to start exploring the commands made available to you.
 > **Note:** The ink! CLI is under heavy development and some of its commands are not implemented, yet!
-
