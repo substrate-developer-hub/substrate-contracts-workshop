@@ -36,7 +36,7 @@ Smart contracts exist as an extension of the account system on the blockchain. T
 
 You will notice on the **Code** tab there is a new object that represents our smart contract. We now need to deploy our smart contract to create an **instance**. Press the "Deploy" button on the flipper contract.
 
-To instantiate our contract we just need to give this contract account an _endowment_ of `1,000,000` in order to pay the storage rent and again set the _maximum gas allowed_ to `500,000` units:
+To instantiate our contract we just need to give this contract account an _endowment_ of `1,000` in order to pay the storage rent and again set the _maximum gas allowed_ to default value(`100000000000`) units:
 
 ![An image of the Contracts Instance Page](./assets/flipper-instance-page.png)
 
