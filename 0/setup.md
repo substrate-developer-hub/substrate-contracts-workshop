@@ -16,6 +16,9 @@ curl https://getsubstrate.io -sSf | bash -s -- --fast
 ```
 rustup target add wasm32-unknown-unknown --toolchain stable
 rustup component add rust-src --toolchain nightly
+rustup toolchain install nightly-2020-06-01
+rustup target add wasm32-unknown-unknown --toolchain nightly-2020-06-01
+cargo +nightly-2020-06-01 build --release
 ```
 If you are using another operating system, like __Windows__, follow the [installation instructions](https://substrate.dev/docs/en/knowledgebase/getting-started/windows-users) on the Substrate Developer Hub.
 
