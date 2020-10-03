@@ -20,16 +20,6 @@ cd flipper/
 ```
 flipper
 |
-+-- .cargo
-|   |
-|   +-- config            <-- Compiler Configuration
-+-- .ink
-|   |
-|   +-- abi_gen 
-|       |
-|       +-- Cargo.toml   
-|       +-- main.rs       <-- ABI Generator
-|
 +-- lib.rs                <-- Contract Source Code
 |
 +-- Cargo.toml            <-- Rust Dependencies and ink! Configuration

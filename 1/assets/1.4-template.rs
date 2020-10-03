@@ -3,35 +3,36 @@
 
 use ink_lang as ink;
 
-#[ink::contract(version = "0.1.0")]
+#[ink::contract()]
 mod incrementer {
-    use ink_core::storage;
-
     #[ink(storage)]
-    struct Incrementer {
-        value: storage::Value<i32>,
+    pub struct Incrementer {
+        value: i32,
     }
 
     impl Incrementer {
         #[ink(constructor)]
-        fn new(&mut self, init_value: i32) {
-            self.value.set(init_value);
+        pub fn new(init_value: i32) -> Self {
+            Self {
+                value: init_value,
+            }
         }
 
         #[ink(constructor)]
-        fn default(&mut self) {
-            self.new(0)
+        pub fn default() -> Self {
+            Self {
+                value: 0,
+            }
         }
 
         #[ink(message)]
-        fn get(&self) -> i32 {
-            *self.value
+        pub fn get(&self) -> i32 {
+            self.value
         }
 
         #[ink(message)]
-        fn inc(&mut self, by: i32) {
-            // ACTION: Simply increment `*self.value` by `by`
-            //   HINT: Because the value is already initialized, you can do `+=`
+        pub fn inc(&mut self, by: i32) {
+            // ACTION: Simply increment `value` by `by`
         }
     }
 
@@ -39,13 +40,15 @@ mod incrementer {
     mod tests {
         use super::*;
 
-        #[test]
+        use ink_lang as ink;
+
+        #[ink::test]
         fn default_works() {
             let contract = Incrementer::default();
             assert_eq!(contract.get(), 0);
         }
 
-        #[test]
+        #[ink::test]
         fn it_works() {
             let mut contract = Incrementer::new(42);
             assert_eq!(contract.get(), 42);

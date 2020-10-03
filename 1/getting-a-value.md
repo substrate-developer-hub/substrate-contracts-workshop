@@ -21,7 +21,7 @@ In Rust, you can make as many implementations as you want. As a stylistic choice
 impl MyContract {
     /// Public function
     #[ink(message)]
-    fn my_public_function(&self) {
+    pub fn my_public_function(&self) {
         /* --snip-- */
     }
 
@@ -68,30 +68,18 @@ In that same file, you can find the other APIs exposed by storage values, howeve
 
 ## Getting a Value
 
-We already showed you how to use `set` when we initialized the storage value. Getting the value is just as simple:
+We already showed you how to initialize a storage value. Getting the value is just as simple:
 
 ```rust
 impl MyContract {
     #[ink(message)]
     fn my_getter(&self) -> u32 {
-        let number = *self.my_number.get();
-        number
+        self.number
     }
 }
 ```
 
-You should take notice that the `get` API returns a _reference_ to the value, so to actually get the value you need to dereference it with an asterisks (`*`). In Rust, if the last expression in a function does not have a semicolon, then it will be the return value.
-
-You can also drop `.get()` to implicitly get the value:
-
-```rust
-impl MyContract {
-    #[ink(message)]
-    fn my_getter(&self) -> u32 {
-        *self.my_number
-    }
-}
-```
+In Rust, if the last expression in a function does not have a semicolon, then it will be the return value.
 
 ## Your Turn!
 

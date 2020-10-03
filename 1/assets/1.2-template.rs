@@ -3,27 +3,25 @@
 
 use ink_lang as ink;
 
-#[ink::contract(version = "0.1.0")]
+#[ink::contract()]
 mod incrementer {
-    use ink_core::storage;
-
     #[ink(storage)]
-    struct Incrementer {
-        // ACTION: Create a `storage::Value` called `value` which holds a `i32`
+    pub struct Incrementer {
+        // ACTION: Create a storage value called `value` which holds a `i32`
     }
 
     impl Incrementer {
         #[ink(constructor)]
-        fn new(&mut self, init_value: i32) {
-            // ACTION: `set` the initial value of `value` with `init_value`
+        pub fn new(init_value: i32) -> Self {
+            // ACTION: Create a new `Incrementer` and set its `value` to `init_value`
         }
 
         // ACTION: Create a second constructor function named `default`.
-        //         It has no input, and calls the `new` constructor with
-        //         an `init_value` of 0.
+        //         It has no input, and creates a new `Incrementer` with its `value`
+        //         set to `0`.
 
         #[ink(message)]
-        fn get(&self) {
+        pub fn get(&self) {
             // Contract Message
         }
     }
@@ -32,7 +30,9 @@ mod incrementer {
     mod tests {
         use super::*;
 
-        #[test]
+        use ink_lang as ink;
+
+        #[ink::test]
         fn default_works() {
             let contract = Incrementer::default();
         }

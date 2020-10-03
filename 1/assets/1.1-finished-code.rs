@@ -1,25 +1,23 @@
-
 #![cfg_attr(not(feature = "std"), no_std)]
 
 use ink_lang as ink;
 
-#[ink::contract(version = "0.1.0")]
+#[ink::contract()]
 mod incrementer {
-    use ink_core::storage;
-
     #[ink(storage)]
-    struct Incrementer {
+    pub struct Incrementer {
         // Storage Declaration
     }
 
     impl Incrementer {
         #[ink(constructor)]
-        fn new(&mut self, init_value: i32) {
+        pub fn new(init_value: i32) -> Self {
             // Contract Constructor
+            Self{}
         }
 
         #[ink(message)]
-        fn get(&self) {
+        pub fn get(&self) {
             // Contract Message
         }
     }
@@ -28,7 +26,9 @@ mod incrementer {
     mod tests {
         use super::*;
 
-        #[test]
+        use ink_lang as ink;
+
+        #[ink::test]
         fn default_works() {
             // Test Your Contract
         }

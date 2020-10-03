@@ -12,38 +12,16 @@ If you are simply _reading_ from the contract storage, you only need to pass `&s
 ```rust
 impl MyContract {
     #[ink(message)]
-    fn my_getter(&self) -> u32 {
-        *self.my_number
+    pub fn my_getter(&self) -> u32 {
+        self.my_number
     } 
 
     #[ink(message)]
-    fn my_setter(&mut self, new_value: u32) {
-        self.my_number.set(new_value);
+    pub fn my_setter(&mut self, new_value: u32) {
+        self.my_number = new_value;
     }
 }
 ```
-
-## Modifying a Storage Value
-
-You can always update the value of a storage item by calling `set` again.
-
-However, if you know the value is already set, then you can modify the value in a more ergonomic way:
-
-```rust
-impl MyContract {
-    #[ink(message)]
-    fn my_setter(&mut self, new_value: u32) {
-        self.my_number.set(new_value);
-    }
-
-    #[ink(message)]
-    fn my_adder(&mut self, add_value: u32) {
-        self.my_number += add_value;
-    }
-}
-```
-
-However, if the value is not initialized, your contract will compile fine, but will panic during contract execution! **We really cannot understate how easy it is to make mistakes this way.**
 
 ## Your Turn
 

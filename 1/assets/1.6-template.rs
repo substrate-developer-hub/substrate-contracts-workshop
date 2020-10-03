@@ -3,44 +3,48 @@
 
 use ink_lang as ink;
 
-#[ink::contract(version = "0.1.0")]
+#[ink::contract()]
 mod incrementer {
-    use ink_core::storage;
-
     #[ink(storage)]
-    struct Incrementer {
-        value: storage::Value<i32>,
-        my_value: storage::HashMap<AccountId, u64>,
+    pub struct Incrementer {
+        value: i32,
+        my_value: ink_storage::collections::HashMap<AccountId, u64>,
     }
 
     impl Incrementer {
         #[ink(constructor)]
-        fn new(&mut self, init_value: i32) {
-            self.value.set(init_value);
+        pub fn new(init_value: i32) -> Self {
+            Self {
+                value: init_value,
+                my_value: ink_storage::collections::HashMap::new(),
+            }
         }
 
         #[ink(constructor)]
-        fn default(&mut self) {
-            self.new(0)
+        pub fn default() -> Self {
+            Self {
+                value: 0,
+                my_value: ink_storage::collections::HashMap::new(),
+            }
         }
 
         #[ink(message)]
-        fn get(&self) -> i32 {
-            *self.value
+        pub fn get(&self) -> i32 {
+            self.value
         }
 
         #[ink(message)]
-        fn inc(&mut self, by: i32) {
-            *self.value += by;
+        pub fn inc(&mut self, by: i32) {
+            self.value += by;
         }
 
         #[ink(message)]
-        fn get_mine(&self) -> u64 {
+        pub fn get_mine(&self) -> u64 {
             self.my_value_or_zero(&self.env().caller())
         }
 
         #[ink(message)]
-        fn inc_mine(&mut self, by: u64) {
+        pub fn inc_mine(&mut self, by: u64) {
             // ACTION: Get the `caller` of this function.
             // ACTION: Get `my_value` that belongs to `caller` by using `my_value_or_zero`.
             // ACTION: Insert the incremented `value` back into the mapping.
@@ -55,13 +59,15 @@ mod incrementer {
     mod tests {
         use super::*;
 
+        use ink_lang as ink;
+
         #[test]
         fn default_works() {
             let contract = Incrementer::default();
             assert_eq!(contract.get(), 0);
         }
 
-        #[test]
+        #[ink::test]
         fn it_works() {
             let mut contract = Incrementer::new(42);
             assert_eq!(contract.get(), 42);
@@ -70,8 +76,8 @@ mod incrementer {
             contract.inc(-50);
             assert_eq!(contract.get(), -3);
         }
-        
-        #[test]
+
+        #[ink::test]
         fn my_value_works() {
             let mut contract = Incrementer::new(11);
             assert_eq!(contract.get(), 11);
@@ -80,7 +86,6 @@ mod incrementer {
             assert_eq!(contract.get_mine(), 5);
             contract.inc_mine(10);
             assert_eq!(contract.get_mine(), 15);
-            
         }
     }
 }

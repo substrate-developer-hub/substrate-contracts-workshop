@@ -5,15 +5,15 @@ Let's now extend our Incrementer to not only manage one number, but to manage on
 
 ## Storage HashMap
 
-In addition to `storage::Value`, ink! also supports a `storage::HashMap` which allows you to store items in a key-value mapping.
+In addition to storing individual values, ink! also supports a `HashMap` which allows you to store items in a key-value mapping.
 
 Here is an example of a mapping from user to a number:
 
 ```rust
 #[ink(storage)]
-struct MyContract {
+pub struct MyContract {
     // Store a mapping from AccountIds to a u32
-    my_number_map: storage::HashMap<AccountId, u32>,
+    my_number_map: ink_storage::collections::HashMap<AccountId, u32>,
 }
 ```
 
@@ -21,7 +21,7 @@ This means that for a given key, you can store a unique instance of a value type
 
 ## Storage HashMap API
 
-You can find the full HashMap API in the [core/src/storage2/collections/hashmap](https://github.com/paritytech/ink/blob/master/core/src/storage2/collections/hashmap/impls.rs) part of ink!.
+You can find the full HashMap API in the [crates/storage/src/collections/hashmap](https://github.com/paritytech/ink/blob/master/crates/storage/src/collections/hashmap/impls.rs) part of ink!.
 
 Here are some of the most common functions you might use:
 
@@ -52,7 +52,7 @@ Here are some of the most common functions you might use:
 
 ## Initializing a HashMap
 
-As mentioned a number of times throughout this tutorial, not initializing storage before you use it is a common error that can break your smart contract. For each key in a storage value, the value needs to be set before you can use it. To do this, we will create a private function which handles when the value is set and when it is not, and make sure we never work with uninitialized storage.
+As mentioned, not initializing storage before you use it is a common error that can break your smart contract. For each key in a storage value, the value needs to be set before you can use it. To do this, we will create a private function which handles when the value is set and when it is not, and make sure we never work with uninitialized storage.
 
 So given `my_number_map`, imagine we wanted the default value for any given key to be `0`. We can build a function like this:
 
@@ -62,14 +62,12 @@ So given `my_number_map`, imagine we wanted the default value for any given key 
 
 use ink_lang as ink;
 
-#[ink::contract(version = "0.1.0")]
+#[ink::contract()]
 mod mycontract {
-    use ink_core::storage;
-    
     #[ink(storage)]
-    struct MyContract {
+    pub struct MyContract {
         // Store a mapping from AccountIds to a u32
-        my_number_map: storage::HashMap<AccountId, u32>,
+        my_number_map: ink_storage::collections::HashMap<AccountId, u32>,
     }
 
     impl MyContract {
@@ -93,31 +91,26 @@ Here is an example:
 
 use ink_lang as ink;
 
-#[ink::contract(version = "0.1.0")]
+#[ink::contract()]
 mod mycontract {
-    use ink_core::storage;
-
-    
     #[ink(storage)]
-    struct MyContract {
+    pub struct MyContract {
         // Store a mapping from AccountIds to a u32
-        my_number_map: storage::HashMap<AccountId, u32>,
+        my_number_map: ink_storage::collections::HashMap<AccountId, u32>,
     }
 
     impl MyContract {
         // Get the value for a given AccountId
         #[ink(message)]
-        fn get(&self, of: AccountId) -> u32 {
-            let value = self.my_number_or_zero(&of);
-            value
+        pub fn get(&self, of: AccountId) -> u32 {
+            self.my_number_or_zero(&of)
         }
 
         // Get the value for the calling AccountId
         #[ink(message)]
-        fn get_my_number(&self) -> u32 {
+        pub fn get_my_number(&self) -> u32 {
             let caller = self.env().caller();
-            let value = self.my_number_or_zero(&caller);
-            value
+            self.my_number_or_zero(&caller)
         }
 
         // Returns the number for an AccountId or 0 if it is not set.
@@ -143,21 +136,20 @@ As you might have noticed in the example above, we use a special function called
 
 use ink_lang as ink;
 
-#[ink::contract(version = "0.1.0")]
+#[ink::contract()]
 mod mycontract {
-    use ink_core::storage;
-
-    
     #[ink(storage)]
-    struct MyContract {
+    pub struct MyContract {
         // Store a contract owner
-        owner: storage::Value<AccountId>,
+        owner: AccountId,
     }
 
     impl MyContract {
         #[ink(constructor)]
-        fn new(&mut self, init_value: i32) {
-            self.owner.set(self.env().caller());
+        pub fn new(init_value: i32) -> Self {
+            Self {
+                owner: self.env().caller(),
+            }
         }
         /* --snip-- */
     }
