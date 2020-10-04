@@ -62,7 +62,7 @@ So given `my_number_map`, imagine we wanted the default value for any given key 
 
 use ink_lang as ink;
 
-#[ink::contract()]
+#[ink::contract]
 mod mycontract {
     #[ink(storage)]
     pub struct MyContract {
@@ -91,7 +91,7 @@ Here is an example:
 
 use ink_lang as ink;
 
-#[ink::contract()]
+#[ink::contract]
 mod mycontract {
     #[ink(storage)]
     pub struct MyContract {
@@ -136,7 +136,7 @@ As you might have noticed in the example above, we use a special function called
 
 use ink_lang as ink;
 
-#[ink::contract()]
+#[ink::contract]
 mod mycontract {
     #[ink(storage)]
     pub struct MyContract {

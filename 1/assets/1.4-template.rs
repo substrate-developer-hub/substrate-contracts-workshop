@@ -3,7 +3,7 @@
 
 use ink_lang as ink;
 
-#[ink::contract()]
+#[ink::contract]
 mod incrementer {
     #[ink(storage)]
     pub struct Incrementer {
@@ -42,13 +42,13 @@ mod incrementer {
 
         use ink_lang as ink;
 
-        #[ink::test]
+        #[test]
         fn default_works() {
             let contract = Incrementer::default();
             assert_eq!(contract.get(), 0);
         }
 
-        #[ink::test]
+        #[test]
         fn it_works() {
             let mut contract = Incrementer::new(42);
             assert_eq!(contract.get(), 42);

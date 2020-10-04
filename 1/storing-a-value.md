@@ -32,7 +32,7 @@ Here is an example of how you would store an `AccountId` and `Balance`:
 // We are importing the default PALETTE types
 use ink_lang as ink;
 
-#[ink::contract()]
+#[ink::contract]
 impl MyContract {
 
     // Our struct will use those default PALETTE types
@@ -56,7 +56,7 @@ Every ink! smart contract must have a constructor which is run once when a contr
 ```rust
 use ink_lang as ink;
 
-#[ink::contract()]
+#[ink::contract]
 mod my_contract {
     #[ink(storage)]
     pub struct MyContract {
