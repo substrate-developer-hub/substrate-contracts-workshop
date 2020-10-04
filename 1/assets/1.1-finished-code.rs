@@ -2,7 +2,7 @@
 
 use ink_lang as ink;
 
-#[ink::contract()]
+#[ink::contract]
 mod incrementer {
     #[ink(storage)]
     pub struct Incrementer {
@@ -28,7 +28,7 @@ mod incrementer {
 
         use ink_lang as ink;
 
-        #[ink::test]
+        #[test]
         fn default_works() {
             // Test Your Contract
         }
