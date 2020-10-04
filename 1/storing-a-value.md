@@ -82,24 +82,6 @@ mod my_contract {
 }
 ```
 
-## Initializing Storage
-
-> **IMPORTANT:** This section is important. Read it twice. Then have tea and read it again.
-
-Before you can interact with any storage items in an ink! contract, **you must make sure they are initialized!** If you do not initialize a storage item and try to access it, your contract call will not succeed and any state changes caused by the transaction will be reverted. (Gas fees will still be charged though!)
-
-Notice that in the example above, the initial value of the item is set in the constructor:
-
-```rust
-pub fn new(init_value: u32) -> Self {
-    Self {
-        number: init_value,
-    }
-}
-```
-
-This can be done anywhere in our contract logic, but most commonly this happens by using the `#[ink(constructor)]` attribute.
-
 ## Your Turn!
 
 Follow the `ACTION`s in the template.

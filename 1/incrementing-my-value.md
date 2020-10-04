@@ -5,7 +5,7 @@ The final step in our Incrementer contract is to allow each user to update incre
 
 ## Modifying a HashMap
 
-Making changes to the value of a HashMap is just as sensitive as getting the value. If you try to modify some value before it has been initialized, your contract will panic! (Have you been keeping count the number of times we say this?)
+Making changes to the value of a HashMap is just as sensitive as getting the value. If you try to modify some value before it has been initialized, your contract will panic!
 
 But have no fear, we can continue to use the `my_number_or_zero` function we created to protect us from these situations!
 
