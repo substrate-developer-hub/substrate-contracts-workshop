@@ -38,6 +38,22 @@ impl MyContract {
 
 Here we have written two kinds of functions which modify a HashMap. One which simply inserts the value directly into storage, with no need to read the value first, and the other which modifies the existing value. Note how we can always `insert` the value without worry, as that initialized the value in storage, but before you can get or modify anything, we need to call `my_number_or_zero` to make sure we are working with a real value.
 
+## Feel the Pain (Optional)
+
+We will not always have an existing value on our contract's storage. We can take advantage of the Rust `Option<T>` type to help use on this task.
+If there's no value on the contract storage we will insert a new one; on the contrary if there is an existing value we will only update it.
+
+ink! HashMaps expose the well-known `entry` API that we can use to achieve this type of "upsert" behavior:
+
+```rust
+let caller = self.env().caller();
+self.my_number_map
+    .entry(caller)
+    .and_modify(|old_value| old_value += by)
+    .or_insert(by);
+```
+
+
 ## Your Turn!
 
 Follow the `ACTION`s to finish your Incrementer smart contract.
