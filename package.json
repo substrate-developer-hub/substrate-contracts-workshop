@@ -1,0 +1,16 @@
+{
+  "name": "substrate-contracts-workshop",
+  "version": "1.0.0",
+  "description": "A guided tutorial for building smart contracts on Parity Substrate",
+  "main": "index.html",
+  "repository": "git@github.com:substrate-developer-hub/substrate-contracts-workshop.git",
+  "author": "Substrate DevHub <https://github.com/substrate-developer-hub>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  },
+  "scripts": {
+    "start": "http-server -o -c-1"
+  }
+}

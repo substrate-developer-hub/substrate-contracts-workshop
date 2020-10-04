@@ -14,3 +14,15 @@ We will cover:
 8. Creating a more complex ERC20 contract.
 
 We would love for you to give feedback in these early stages, so open an issue or a PR!
+
+### Running Locally
+
+With [node.js](https://nodejs.org/en/) version that is `v12` or above installed, run
+
+```bash
+# Install the dev dependencies
+yarn install
+
+# Run the local server
+yarn start
+```
