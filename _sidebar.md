@@ -18,7 +18,6 @@
     - [Incrementing the Value](1/incrementing-the-value.md)
     - [Storing a Mapping](1/storing-a-mapping.md)
     - [Incrementing My Value](1/incrementing-my-value.md)
-    - [Safe Math](1/safe-math.md)
 
 - [**#2 ERC20**](2/introduction.md)
 
