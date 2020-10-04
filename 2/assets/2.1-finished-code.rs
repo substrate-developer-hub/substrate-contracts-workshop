@@ -1,35 +1,35 @@
-
 #![cfg_attr(not(feature = "std"), no_std)]
 
 use ink_lang as ink;
 
-#[ink::contract(version = "0.1.0")]
+#[ink::contract]
 mod erc20 {
-    use ink_core::storage;
-
     #[ink(storage)]
-    struct Erc20 {
+    pub struct Erc20 {
         /// The total supply.
-        total_supply: storage::Value<Balance>,
+        total_supply: Balance,
         /// The balance of each user.
-        balances: storage::HashMap<AccountId, Balance>,
+        balances: ink_storage::collections::HashMap<AccountId, Balance>,
     }
 
     impl Erc20 {
         #[ink(constructor)]
-        fn new(&mut self, initial_supply: Balance) {
-            let caller = self.env().caller();
-            self.total_supply.set(initial_supply);
-            self.balances.insert(caller, initial_supply);
+        pub fn new(initial_supply: Balance) -> Self {
+            let mut balances = ink_storage::collections::HashMap::new();
+            balances.insert(Self::env().caller(), initial_supply);
+            Self {
+                total_supply: initial_supply,
+                balances
+            }
         }
 
         #[ink(message)]
-        fn total_supply(&self) -> Balance {
-            *self.total_supply
+        pub fn total_supply(&self) -> Balance {
+            self.total_supply
         }
 
         #[ink(message)]
-        fn balance_of(&self, owner: AccountId) -> Balance {
+        pub fn balance_of(&self, owner: AccountId) -> Balance {
             self.balance_of_or_zero(&owner)
         }
 
@@ -37,18 +37,20 @@ mod erc20 {
             *self.balances.get(owner).unwrap_or(&0)
         }
     }
-    
+
     #[cfg(test)]
     mod tests {
         use super::*;
 
-        #[test]
+        use ink_lang as ink;
+
+        #[ink::test]
         fn new_works() {
             let contract = Erc20::new(777);
             assert_eq!(contract.total_supply(), 777);
         }
 
-        #[test]
+        #[ink::test]
         fn balance_works() {
             let contract = Erc20::new(100);
             assert_eq!(contract.total_supply(), 100);

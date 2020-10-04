@@ -24,7 +24,7 @@ The most basic ERC20 token contract is a fixed supply token. During contract dep
 
 Of course, this is not the only way to mint and distribute tokens, but the most simple one, and what we will be doing here.
 
-So remember to `set` the total balance and `insert` the balance of the `self.env().caller()`
+So remember to `set` the total balance and `insert` the balance of the `Self::env().caller()`
 
 ## Your Turn!
 
@@ -32,7 +32,7 @@ This chapter should be nothing more than a quick refresher of the content you al
 
 You need to:
 
-- Set up a deployment function which initializes the two storage items
+- Set up a constructor function which initializes the two storage items
 - Create getters for both storage items
 - Create a `balance_of_or_zero` function to handle reading values from the HashMap
 
