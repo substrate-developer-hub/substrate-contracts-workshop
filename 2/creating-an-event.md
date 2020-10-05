@@ -11,7 +11,7 @@ For example,
 
 ```rust
 #[ink(event)]
-struct Foo {
+pub struct Transfer {
     #[ink(topic)]
     from: Option<AccountId>,
     #[ink(topic)]
@@ -20,7 +20,7 @@ struct Foo {
 }
 ```
 
-This `Foo` event will contain three pieces of data - a value of type `Balance` and two Option-wrapped `AccountId` variables indicating the `from` and `to` accounts. For faster access to the event data they can have _indexed fields_. We can do this by using the `#[ink(topic)]` attribute tag on that field. 
+This `Transfer` event will contain three pieces of data - a value of type `Balance` and two Option-wrapped `AccountId` variables indicating the `from` and `to` accounts. For faster access to the event data they can have _indexed fields_. We can do this by using the `#[ink(topic)]` attribute tag on that field. 
 
 One way of retrieving data from an Option<T> variable is using the `.unwrap_or()` function.  You may recall using this in the `my_value_or_zero()` and `balance_of_or_zero()` functions in this project and the Incrementer project.  
 
@@ -42,7 +42,7 @@ self.env()
 
 > Note: `value` does not need a `Some()`, as the value is not stored in an `Option`.
 
-We want to emit a Foo event every time that a transfer takes place.  In the ERC-20 template that we have been working on, this occurs in two places: first, during the `new` call, and second, every time that `transfer_from_to` is called.
+We want to emit a Transfer event every time that a transfer takes place.  In the ERC-20 template that we have been working on, this occurs in two places: first, during the `new` call, and second, every time that `transfer_from_to` is called.
 
 ## Your Turn!
 
