@@ -33,7 +33,7 @@ Remember that the `transfer` function and other public functions return a bool t
 
 ```rust
 #[ink(message)] 
-fn transfer(&mut self, to: AccountId, value: Balance) -> bool {/* --snip-- */}
+pub fn transfer(&mut self, to: AccountId, value: Balance) -> bool {/* --snip-- */}
 ```
 
 Finally, the `transfer` function will simply call into the `transfer_from_to` with the `from` parameter automatically set to the `self.env().caller()`. This is our "authorization check" since the contract caller is always authorized to move their own funds.
