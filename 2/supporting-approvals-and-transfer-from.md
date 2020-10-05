@@ -28,9 +28,9 @@ To store approvals in our contract, we need to use a slightly fancy `HashMap`.
 Since each account can have a different amount approved for any other account to use, we need to use a tuple as our key which simply points to a balance value. Here is an example of what that would look like:
 
 ```rust
-struct Erc20 {
+pub struct Erc20 {
     /// Balances that are spendable by non-owners: (owner, spender) -> allowed
-    allowances: storage::HashMap<(AccountId, AccountId), Balance>,
+    allowances: ink_storage::collections::HashMap<(AccountId, AccountId), Balance>,
 }
 ```
 
@@ -40,7 +40,7 @@ Here we have defined the tuple to represent `(owner, spender)` such that we can 
 /// Approve the passed AccountId to spend the specified amount of tokens
 /// on the behalf of the message's sender.
 #[ink(message)] 
-fn approve(&mut self, spender: AccountId, value: Balance) -> bool {/* --snip-- */}
+pub fn approve(&mut self, spender: AccountId, value: Balance) -> bool {/* --snip-- */}
 ```
 
 When you call the `approve` function, you simply insert the `value` specified into storage. The `owner` is always the `self.env().caller()`, ensuring that the function call is always authorized.

@@ -1,25 +1,22 @@
-
 #![cfg_attr(not(feature = "std"), no_std)]
 
 use ink_lang as ink;
 
-#[ink::contract(version = "0.1.0")]
+#[ink::contract]
 mod erc20 {
-    use ink_core::storage;
-
     #[ink(storage)]
-    struct Erc20 {
+    pub struct Erc20 {
         /// The total supply.
-        total_supply: storage::Value<Balance>,
+        total_supply: Balance,
         /// The balance of each user.
-        balances: storage::HashMap<AccountId, Balance>,
+        balances: ink_storage::collections::HashMap<AccountId, Balance>,
         /// Approval spender on behalf of the message's sender.
-        // ACTION: Add an `allowances` storage item. It should be a
+        //  ACTION: Add an `allowances` storage item. It should be a
         //         `HashMap` from `(AccountId, AccountId)` to `Balance`
     }
 
     #[ink(event)]
-    struct Transfer {
+    pub struct Transfer {
         #[ink(topic)]
         from: Option<AccountId>,
         #[ink(topic)]
@@ -36,29 +33,35 @@ mod erc20 {
 
     impl Erc20 {
         #[ink(constructor)]
-        fn new(&mut self, initial_supply: Balance) {
-            let caller = self.env().caller();
-            self.total_supply.set(initial_supply);
-            self.balances.insert(caller, initial_supply);
-            self.env().emit_event(Transfer {
+        pub fn new(initial_supply: Balance) -> Self {
+            let caller = Self::env().caller();
+            let mut balances = ink_storage::collections::HashMap::new();
+            balances.insert(caller, initial_supply);
+
+            Self::env().emit_event(Transfer {
                 from: None,
                 to: Some(caller),
                 value: initial_supply,
             });
+
+            Self {
+                total_supply: initial_supply,
+                balances
+            }
         }
 
         #[ink(message)]
-        fn total_supply(&self) -> Balance {
-            *self.total_supply
+        pub fn total_supply(&self) -> Balance {
+            self.total_supply
         }
 
         #[ink(message)]
-        fn balance_of(&self, owner: AccountId) -> Balance {
+        pub fn balance_of(&self, owner: AccountId) -> Balance {
             self.balance_of_or_zero(&owner)
         }
 
         #[ink(message)]
-        fn approve(&mut self, spender: AccountId, value: Balance) -> bool {
+        pub fn approve(&mut self, spender: AccountId, value: Balance) -> bool {
             // ACTION: Get the `self.env().caller()` and store it as the `owner`
             // ACTION: Insert the new allowance into the `allowances` HashMap
             //   HINT: The key tuple is `(owner, spender)`
@@ -67,14 +70,14 @@ mod erc20 {
         }
 
         #[ink(message)]
-        fn allowance(&self, owner: AccountId, spender: AccountId) -> Balance {
+        pub fn allowance(&self, owner: AccountId, spender: AccountId) -> Balance {
             // ACTION: Create a getter for the `allowances` HashMap
             //   HINT: Take a look at the getters above if you forget the details
             // ACTION: Return the `allowance` value
         }
 
         #[ink(message)]
-        fn transfer_from(&mut self, from: AccountId, to: AccountId, value: Balance) -> bool {
+        pub fn transfer_from(&mut self, from: AccountId, to: AccountId, value: Balance) -> bool {
             // ACTION: Get the allowance for `(from, self.env().caller())` using `allowance_of_or_zero`
             // ACTION: `if` the `allowance` is less than the `value`, exit early and return `false`
             // ACTION: `insert` the new allowance into the map for `(from, self.env().caller())`
@@ -83,9 +86,8 @@ mod erc20 {
         }
 
         #[ink(message)]
-        fn transfer(&mut self, to: AccountId, value: Balance) -> bool {
-            let from = self.env().caller();
-            self.transfer_from_to(from, to, value)
+        pub fn transfer(&mut self, to: AccountId, value: Balance) -> bool {
+            self.transfer_from_to(self.env().caller(), to, value)
         }
 
         fn transfer_from_to(&mut self, from: AccountId, to: AccountId, value: Balance) -> bool {
@@ -93,14 +95,20 @@ mod erc20 {
             if from_balance < value {
                 return false
             }
-            let to_balance = self.balance_of_or_zero(&to);
+
+            // Update the sender's balance.
             self.balances.insert(from, from_balance - value);
+
+            // Update the receiver's balance.
+            let to_balance = self.balance_of_or_zero(&to);
             self.balances.insert(to, to_balance + value);
+
             self.env().emit_event(Transfer {
                 from: Some(from),
                 to: Some(to),
                 value,
             });
+
             true
         }
 
@@ -117,13 +125,15 @@ mod erc20 {
     mod tests {
         use super::*;
 
-        #[test]
+        use ink_lang as ink;
+
+        #[ink::test]
         fn new_works() {
             let contract = Erc20::new(777);
             assert_eq!(contract.total_supply(), 777);
         }
 
-        #[test]
+        #[ink::test]
         fn balance_works() {
             let contract = Erc20::new(100);
             assert_eq!(contract.total_supply(), 100);
@@ -131,7 +141,7 @@ mod erc20 {
             assert_eq!(contract.balance_of(AccountId::from([0x0; 32])), 0);
         }
 
-        #[test]
+        #[ink::test]
         fn transfer_works() {
             let mut contract = Erc20::new(100);
             assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 100);
@@ -140,7 +150,7 @@ mod erc20 {
             assert!(!contract.transfer(AccountId::from([0x0; 32]), 100));
         }
 
-        #[test]
+        #[ink::test]
         fn transfer_from_works() {
             let mut contract = Erc20::new(100);
             assert_eq!(contract.balance_of(AccountId::from([0x1; 32])), 100);
