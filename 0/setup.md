@@ -11,7 +11,11 @@ Substrate Developer Hub Knowledge Base.
 
 ```
 rustup target add wasm32-unknown-unknown --toolchain stable
-rustup component add rust-src --toolchain nightly
+rustup install nightly-2020-10-06
+rustup target add wasm32-unknown-unknown --toolchain nightly-2020-10-06
+rustup install nightly-2020-10-08
+rustup target add wasm32-unknown-unknown --toolchain nightly-2020-10-08
+rustup component add rust-src --toolchain nightly-2020-10-08
 ```
 
 ## Installing The Canvas Node
@@ -19,7 +23,7 @@ rustup component add rust-src --toolchain nightly
 We need to use a Canvas node with the built-in Contracts module. For this workshop we'll use the pre-designed Substrate node client.
 
 ```bash
-cargo install canvas-node --git https://github.com/paritytech/canvas-node.git --force
+cargo +nightly-2020-10-06 install canvas-node --git https://github.com/paritytech/canvas-node.git --tag v0.1.0 --force
 ```
 
 ## ink! CLI
@@ -29,8 +33,7 @@ The final tool we will be installing is the ink! command line utility which will
 You can install the utility using Cargo with:
 
 ```bash
-cargo install cargo-contract --vers 0.7.0 --force
+cargo +nightly-2020-10-08 install cargo-contract --git https://github.com/paritytech/cargo-contract.git --rev 6d4c18a --force
 ```
 
 You can then use `cargo contract --help` to start exploring the commands made available to you.
-> **Note:** The ink! CLI is under heavy development and some of its commands are not implemented, yet!

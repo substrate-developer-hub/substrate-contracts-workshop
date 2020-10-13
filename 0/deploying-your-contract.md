@@ -16,29 +16,25 @@ With this pattern, contract code like the ERC20 standard can be put on the block
 
 ## Putting Your Code on the Blockchain
 
-With your Canvas development node running, you can go back to the [Polkadot UI](https://polkadot.js.org/apps/) where you will be able to interact with your blockchain.
+Open the specially designed **Upload** section of the Canvas UI.
 
-Open the specially designed **Contracts** section of the UI.
-
-In the **Code** section, select **"Upload Wasm"**.
-
-In the popup, select a _deployment account_ with some account balance, like `Alice`. In _compiled contract WASM_, select the `flipper.wasm` file we generated. For the _contract's metadata_, select the JSON file.
+Use the dropdown to select a _deployment account_ with some account balance, like `Alice`. Enter a name for the contract in the input field. Provide the `flipper.wasm` and `metadata.json` files as the Wasm blob and optional ABI, respectively.
 
 ![Contracts code page for deploying Flipper](./assets/flipper-code-page.png)
 
-After you press **Upload** and **Sign and Submit** the extrinsic, a new block is formed and a system event is emitted with `contracts.PutCode`. If the transaction succeeds you will get an `system.ExtrinsicSuccess` event and your WASM contract will be stored on your Substrate blockchain!
+Click **Upload** and then **Sign & Submit** on the confirmation page.
+
+This should emit a `contracts.PutCode` event. If the transaction succeeds you will get an `system.ExtrinsicSuccess` event and your WASM contract will be stored on your Substrate blockchain!
 
 ![An image of events from Flipper code upload](./assets/flipper-upload-events.png)
-
-> **Note:** If you get a `system.ExtrinsicFailed` error message, you may not have allowed enough gas to execute the call.  You can verify that this is the cause by looking at the logs in the terminal. This may occur on this or any subsequent contract instantiations or calls.
 
 ## Creating an Instance of Your Contract
 
 Smart contracts exist as an extension of the account system on the blockchain. Thus creating an instance of this contract will create a new `AccountId` which will store any balance managed by the smart contract and allow us to interact with the contract.
 
-You will notice on the **Code** tab there is a new object that represents our smart contract. We now need to deploy our smart contract to create an **instance**. Press the **"Deploy"** button on the flipper contract.
+After you uploaded the contract in the previous step, a confirmation screen displays the information that represents our smart contract. We now need to deploy our smart contract to create an **instance**. Press the **"Deploy Code"** button on the confirmation screen.
 
-To instantiate our contract we just need to give this contract account an _endowment_ of `10 Units` in order to pay the storage rent and again set the _maximum gas allowed_ to value(`1,000,000`):
+To instantiate our contract, accept the default options to give this contract account an _endowment_ of `1000 Units` in order to pay the storage rent and set a _maximum gas allowed_ value of `1000000`:
 
 ![An image of the Contracts Instance Page](./assets/flipper-instance-page.png)
 

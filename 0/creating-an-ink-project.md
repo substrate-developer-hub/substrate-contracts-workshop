@@ -31,7 +31,7 @@ flipper
 
 The ink CLI automatically generates the source code for the "Flipper" contract, which is about the simplest "smart" contract you can build. You can take a sneak peak as to what will come by looking at the source code here:
 
-[Flipper Example Source Code](https://github.com/paritytech/ink/blob/master/examples/flipper/lib.rs)
+[Flipper Example Source Code](https://github.com/paritytech/ink/blob/v3.0.0-rc1/examples/flipper/lib.rs)
 
 The Flipper contract is nothing more than a `bool` which gets flipped from true to false through the `flip()` function. We won't go so deep into the details of this source code because we will be walking you through the steps to build a more advanced contract!
 
@@ -42,7 +42,7 @@ You will see at the bottom of the source code there is a simple test which verif
 In your project folder run:
 
 ```bash
-cargo +nightly test
+cargo +nightly-2020-10-08 test
 ```
 
 To which you should see a successful test completion:
