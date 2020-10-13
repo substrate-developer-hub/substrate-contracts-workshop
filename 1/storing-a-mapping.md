@@ -21,33 +21,43 @@ This means that for a given key, you can store a unique instance of a value type
 
 ## Storage HashMap API
 
-You can find the full HashMap API in the [crates/storage/src/collections/hashmap](https://github.com/paritytech/ink/blob/master/crates/storage/src/collections/hashmap/impls.rs) part of ink!.
+You can find the full HashMap API in the [crates/storage/src/collections/hashmap](https://github.com/paritytech/ink/blob/master/crates/storage/src/collections/hashmap/mod.rs) part of ink!.
 
 Here are some of the most common functions you might use:
 
 ```rust
     /// Inserts a key-value pair into the map.
     ///
+    /// Returns the previous value associated with the same key if any.
     /// If the map did not have this key present, `None` is returned.
+    pub fn insert(&mut self, key: K, new_value: V) -> Option<V> {/* --snip-- */}
+
+    /// Removes the key/value pair from the map associated with the given key.
     ///
-    /// If the map did have this key present, the value is updated,
-    /// and the old value is returned.
-    pub fn insert(&mut self, key: K, val: V) -> Option<V> {/* --snip-- */}
+    /// - Returns the removed value if any.
+    pub fn take<Q>(&mut self, key: &Q) -> Option<V> {/* --snip-- */}
 
-    /// Removes a key from the map, returning the value at the key if the key
-    /// was previously in the map.
-    pub fn remove<Q>(&mut self, key: &Q) -> Option<V> {/* --snip-- */}
-
-    /// Returns an immutable reference to the value corresponding to the key.
+    /// Returns a shared reference to the value corresponding to the key.
+    ///
+    /// The key may be any borrowed form of the map's key type,
+    /// but `Hash` and `Eq` on the borrowed form must match those for the key type.
     pub fn get<Q>(&self, key: &Q) -> Option<&V> {/* --snip-- */}
 
     /// Returns a mutable reference to the value corresponding to the key.
+    ///
+    /// The key may be any borrowed form of the map's key type,
+    /// but `Hash` and `Eq` on the borrowed form must match those for the key type.
     pub fn get_mut<Q>(&mut self, key: &Q) -> Option<&mut V> {/* --snip-- */}
 
-    /// Mutates the value associated with the key if any.
-    /// Returns a reference to the mutated element
-    pub fn mutate_with<Q, F>(&mut self, key: &Q, f: F) -> Option<&V> {/* --snip-- */}
-    
+    /// Returns `true` if there is an entry corresponding to the key in the map.
+    pub fn contains_key<Q>(&self, key: &Q) -> bool {/* --snip-- */}
+
+    /// Converts the OccupiedEntry into a mutable reference to the value in the entry
+    /// with a lifetime bound to the map itself.
+    pub fn into_mut(self) -> &'a mut V {/* --snip-- */}
+
+    /// Gets the given key's corresponding entry in the map for in-place manipulation.
+    pub fn entry(&mut self, key: K) -> Entry<K, V> {/* --snip-- */}
 ```
 
 ## Initializing a HashMap
@@ -64,6 +74,7 @@ use ink_lang as ink;
 
 #[ink::contract]
 mod mycontract {
+
     #[ink(storage)]
     pub struct MyContract {
         // Store a mapping from AccountIds to a u32
@@ -93,6 +104,7 @@ use ink_lang as ink;
 
 #[ink::contract]
 mod mycontract {
+
     #[ink(storage)]
     pub struct MyContract {
         // Store a mapping from AccountIds to a u32
@@ -138,6 +150,7 @@ use ink_lang as ink;
 
 #[ink::contract]
 mod mycontract {
+
     #[ink(storage)]
     pub struct MyContract {
         // Store a contract owner
@@ -148,7 +161,7 @@ mod mycontract {
         #[ink(constructor)]
         pub fn new(init_value: i32) -> Self {
             Self {
-                owner: self.env().caller(),
+                owner: Self::env().caller();
             }
         }
         /* --snip-- */

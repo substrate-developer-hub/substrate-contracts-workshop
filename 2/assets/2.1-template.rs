@@ -4,6 +4,7 @@ use ink_lang as ink;
 
 #[ink::contract]
 mod erc20 {
+    #[cfg(not(feature = "ink-as-dependency"))]
     #[ink(storage)]
     pub struct Erc20 {
         /// The total supply.

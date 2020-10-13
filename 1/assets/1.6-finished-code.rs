@@ -24,7 +24,7 @@ mod incrementer {
         pub fn default() -> Self {
             Self {
                 value: 0,
-                my_value: ink_storage::collections::HashMap::new(),
+                my_value: Default::default(),
             }
         }
 

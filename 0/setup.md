@@ -9,12 +9,17 @@ Follow the
 [official installation steps](https://substrate.dev/docs/en/knowledgebase/getting-started/) from the
 Substrate Developer Hub Knowledge Base.
 
+```
+rustup target add wasm32-unknown-unknown --toolchain stable
+rustup component add rust-src --toolchain nightly
+```
+
 ## Installing A Substrate Node
 
 We need to use a Substrate node with the built-in Contracts module. For this workshop we'll use the pre-designed Substrate node client.
 
 ```bash
-cargo install node-cli --git https://github.com/paritytech/substrate.git --tag v2.0.0 --force --locked
+cargo install canvas-node --git https://github.com/paritytech/canvas-node.git --force
 ```
 
 ## ink! CLI

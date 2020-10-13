@@ -4,6 +4,7 @@ use ink_lang as ink;
 
 #[ink::contract]
 mod incrementer {
+
     #[ink(storage)]
     pub struct Incrementer {
         // Storage Declaration

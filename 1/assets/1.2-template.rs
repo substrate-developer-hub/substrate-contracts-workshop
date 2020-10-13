@@ -5,6 +5,7 @@ use ink_lang as ink;
 
 #[ink::contract]
 mod incrementer {
+
     #[ink(storage)]
     pub struct Incrementer {
         // ACTION: Create a storage value called `value` which holds a `i32`

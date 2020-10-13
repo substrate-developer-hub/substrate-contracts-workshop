@@ -29,13 +29,13 @@ use ink_storage::collections::{Vec, HashMap, Stash, Bitvec};
 Here is an example of how you would store an `AccountId` and `Balance`:
 
 ```rust
-// We are importing the default PALETTE types
+// We are importing the default ink! types
 use ink_lang as ink;
 
 #[ink::contract]
-impl MyContract {
+mod MyContract {
 
-    // Our struct will use those default PALETTE types
+    // Our struct will use those default ink! types
     #[ink(storage)]
     pub struct MyContract {
         // Store some AccountId
@@ -43,7 +43,7 @@ impl MyContract {
         // Store some Balance
         my_balance: Balance,
     }
-    ...
+    /* --snip-- */
 }
 ```
 
@@ -57,13 +57,15 @@ Every ink! smart contract must have a constructor which is run once when a contr
 use ink_lang as ink;
 
 #[ink::contract]
-mod my_contract {
+mod mycontract {
+
     #[ink(storage)]
     pub struct MyContract {
         number: u32,
     }
 
     impl MyContract {
+        /// Constructor that initializes the `u32` value to the given `init_value`.
         #[ink(constructor)]
         pub fn new(init_value: u32) -> Self {
             Self {
@@ -71,6 +73,9 @@ mod my_contract {
             }
         }
 
+        /// Constructor that initializes the `u32` value to the `u32` default.
+        ///
+        /// Constructors can delegate to other constructors.
         #[ink(constructor)]
         pub fn default() -> Self {
             Self {
