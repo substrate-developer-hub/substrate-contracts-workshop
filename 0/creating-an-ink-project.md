@@ -42,7 +42,7 @@ You will see at the bottom of the source code there is a simple test which verif
 In your project folder run:
 
 ```bash
-cargo +nightly-2020-10-08 test
+cargo +nightly test
 ```
 
 To which you should see a successful test completion:
