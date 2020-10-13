@@ -52,6 +52,7 @@ mod incrementer {
     mod tests {
         use super::*;
 
+        // Alias `ink_lang` so we can use `ink::test`.
         use ink_lang as ink;
 
         #[test]

@@ -41,8 +41,6 @@ mod incrementer {
     mod tests {
         use super::*;
 
-        use ink_lang as ink;
-
         #[test]
         fn default_works() {
             let contract = Incrementer::default();
