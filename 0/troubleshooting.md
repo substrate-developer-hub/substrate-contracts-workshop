@@ -11,20 +11,19 @@ There is a known issue with the Substrate block production (BABE) on a running c
 ClientImport("Unexpected epoch change")
 ```
 
-To solve this you will need to reset your node with: `substrate purge-chain --dev`. At that point, you will need to re-deploy any contracts and re-do any steps that you may have done before on your node. As long as you keep your node running, you should face no issues.
+To solve this you will need to restart your node with: `canvas --dev --tmp`. At that point, you will need to re-deploy any contracts and re-do any steps that you may have done before on your node. As long as you keep your node running, you should face no issues.
 
 ## Old Contracts in Local Storage
 
-The Polkadot UI uses its own local storage to track the contracts that you have deployed. This means that if you deploy a contract using the UI, and then purge your Substrate node, you will still see the old contracts in the UI even though they do not exist on-chain!
+The Polkadot UI uses its own local storage to track the contracts that you have deployed. This means that if you deploy a contract using the UI, and then purge your Canvas node, you will still see the old contracts in the UI even though they do not exist on-chain!
 
-You can simply remove any old artifacts from the UI or reset your local storage. So remember, when you `purge-chain` you will need to re-deploy any contracts and re-do any steps that you may have done before on your node.
+You can simply remove any old artifacts from the UI or reset your local storage. So remember, when you start a new chain with the `--tmp` flag or use the `purge-chain` subcommand, you will need to re-deploy any contracts and re-do any steps that you may have done before on your node.
 
 ## Transaction vs RPC
 
-When interacting with contracts using the Polkadot UI, you have the option to submit your calls as a transaction or via the RPC:
+When interacting with contracts using the Canvas UI, you have the option to submit your calls as a transaction or via the RPC:
 
-![An image of submitting with transaction](./assets/send-as-rpc.png)
-![An image of submitting with RPC](./assets/send-as-transaction.png)
+![An image of submitting with transaction or RPC](./assets/send-as.png)
 
 When you send as a transaction, it should be exactly as you expect. A transaction is submitted to contract, a fee is deducted from your account, and the state of your blockchain can change. In these situations, no value is returned from your contract calls, only a "Success" or "Failed" extrinsic message along with any events you emit.
 
