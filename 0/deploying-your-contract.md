@@ -1,7 +1,7 @@
 Deploying Your Contract
 ===
 
-Now that we have generated the Wasm binary from our source code and started a Substrate node, we want to deploy this contract onto our Substrate blockchain.
+Now that we have generated the Wasm binary from our source code and started a Canvas node, we want to deploy this contract onto our Substrate blockchain.
 
 Smart contract deployment on Substrate is a little different than on traditional smart contract blockchains.
 
@@ -16,7 +16,7 @@ With this pattern, contract code like the ERC20 standard can be put on the block
 
 ## Putting Your Code on the Blockchain
 
-With your Substrate development node running, you can go back to the [Polkadot UI](https://polkadot.js.org/apps/) where you will be able to interact with your blockchain.
+With your Canvas development node running, you can go back to the [Polkadot UI](https://polkadot.js.org/apps/) where you will be able to interact with your blockchain.
 
 Open the specially designed **Contracts** section of the UI.
 

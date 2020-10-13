@@ -59,7 +59,7 @@ If you look close at the constructors and messages, you will also notice a `sele
 
 Polkadot-JS Apps uses this file to generate a friendly interface for deploying and interacting with your contract. :)
 
-In the next section we will start a Substrate node and configure the Polkadot-JS Apps UI to interact with it.
+In the next section we will start a Canvas node and configure the Polkadot-JS Apps UI to interact with it.
 
 ---
 

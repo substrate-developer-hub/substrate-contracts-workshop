@@ -1,13 +1,13 @@
-Running a Substrate Node
+Running a Canvas Node
 ===
 
-After successfully installing `substrate`, you can start a local development chain by running:
+After successfully installing `canvas`, you can start a local development chain by running:
 
 ```bash
-substrate --dev
+canvas --dev
 ```
 
-> **Note:** If you have run this command in the past, you probably want to purge your chain so that you run through this tutorial with a clean slate. You can do this easily with `substrate purge-chain --dev`.
+> **Note:** If you have run this command in the past, you probably want to purge your chain so that you run through this tutorial with a clean slate. You can do this easily with `canvas purge-chain --dev`.
 
 ![An image of the terminal starting a Substrate node](./assets/start-substrate-node.png)
 

@@ -32,7 +32,7 @@ However, there may be some calls that you want to "test", rather than actually s
 
 ## Contract State Rent
 
-The Substrate contract pallet has a state rent system that forces contracts to stay funded if they want to stay on the blockchain. This means that the more you use a contract, the more fees are taken from it, and at some point, the contract will run out of fees and turn into a non-functioning tombstone. We try to avoid this by giving the contract a large endowment when we initially deploy it. However, if your contract does become a tombstone, for the purposes of this tutorial, the best solution is to just redeploy your contract to the chain.
+The Substrate contracts pallet has a state rent system that forces contracts to stay funded if they want to stay on the blockchain. This means that the more you use a contract, the more fees are taken from it, and at some point, the contract will run out of fees and turn into a non-functioning tombstone. We try to avoid this by giving the contract a large endowment when we initially deploy it. However, if your contract does become a tombstone, for the purposes of this tutorial, the best solution is to just redeploy your contract to the chain.
 
 The best way to prevent this in general is to make sure your contract stays well funded. In real world scenarios, there is a process that you can go through to recover a tombstone contract and get it functioning again, however this is beyond the scope of this tutorial.
 
