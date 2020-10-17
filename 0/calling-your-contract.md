@@ -5,7 +5,7 @@ Now that your contract has been fully deployed, we can start to interact with it
 
 ## get()
 
-If you take a look back at our contract's `on_deploy()` function, we set the initial value of the Flipper contract to `false`. Let's check that this is the case.
+If you take a look back at our contract's `default()` function, we set the initial value of the Flipper contract to `false`. Let's check that this is the case.
 
 In the **Message to Send** section, select the **"get(): bool"** message and accept the default values for the other options.
 
