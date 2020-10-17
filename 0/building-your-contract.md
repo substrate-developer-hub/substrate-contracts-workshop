@@ -51,7 +51,7 @@ Let's take a look at the structure inside:
 
 You can see that this file describes all the interfaces that can be used to interact with your contract.
 
-* Registry provides the **strings** and cutom **types** used throughout the rest of the JSON.
+* Registry provides the **strings** and custom **types** used throughout the rest of the JSON.
 * Storage defines all the **storage** items managed by your contract and how to ultimately access them.
 * Contract stores information about the callable functions like  **constructors** and **messages** a user can call to interact with your contract. It also has helpful information like the **events** that are emitted by the contract or any **docs**.
 
