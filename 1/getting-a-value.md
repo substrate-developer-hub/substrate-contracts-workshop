@@ -73,7 +73,7 @@ We already showed you how to initialize a storage value. Getting the value is ju
 ```rust
 impl MyContract {
     #[ink(message)]
-    fn my_getter(&self) -> u32 {
+    pub fn my_getter(&self) -> u32 {
         self.number
     }
 }
