@@ -82,6 +82,15 @@ mod mycontract {
     }
 
     impl MyContract {
+        /// Public function.
+        /// Default constructor.
+        #[ink(constructor)]
+        pub fn default() -> Self {
+            Self {
+                my_number_map: Default::default(),
+            }
+        }
+    
         /// Private function.
         /// Returns the number for an AccountId or 0 if it is not set.
         fn my_number_or_zero(&self, of: &AccountId) -> u32 {
