@@ -9,7 +9,7 @@ mod incrementer {
     #[ink(storage)]
     pub struct Incrementer {
         value: i32,
-        // ACTION: Add a `HashMap` from `AccountId` to `u64` named `my_value`
+        // ACTION: Add a `HashMap` from `AccountId` to `i32` named `my_value`
     }
 
     impl Incrementer {
@@ -38,12 +38,12 @@ mod incrementer {
         }
 
         #[ink(message)]
-        pub fn get_mine(&self) -> u64 {
+        pub fn get_mine(&self) -> i32 {
             // ACTION: Get `my_value` using `my_value_or_zero` on `&self.env().caller()`
             // ACTION: Return `my_value`
         }
 
-        fn my_value_or_zero(&self, of: &AccountId) -> u64 {
+        fn my_value_or_zero(&self, of: &AccountId) -> i32 {
             // ACTION: `get` and return the value of `of` and `unwrap_or` return 0
         }
     }

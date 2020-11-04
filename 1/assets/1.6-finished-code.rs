@@ -8,7 +8,7 @@ mod incrementer {
     #[ink(storage)]
     pub struct Incrementer {
         value: i32,
-        my_value: ink_storage::collections::HashMap<AccountId, u64>,
+        my_value: ink_storage::collections::HashMap<AccountId, i32>,
     }
 
     impl Incrementer {
@@ -39,18 +39,18 @@ mod incrementer {
         }
 
         #[ink(message)]
-        pub fn get_mine(&self) -> u64 {
+        pub fn get_mine(&self) -> i32 {
             self.my_value_or_zero(&self.env().caller())
         }
 
         #[ink(message)]
-        pub fn inc_mine(&mut self, by: u64) {
+        pub fn inc_mine(&mut self, by: i32) {
             let caller = self.env().caller();
             let my_value = self.my_value_or_zero(&caller);
             self.my_value.insert(caller, my_value + by);
         }
 
-        fn my_value_or_zero(&self, of: &AccountId) -> u64 {
+        fn my_value_or_zero(&self, of: &AccountId) -> i32 {
             *self.my_value.get(of).unwrap_or(&0)
         }
     }
