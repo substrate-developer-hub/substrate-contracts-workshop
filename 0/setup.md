@@ -19,7 +19,7 @@ rustup target add wasm32-unknown-unknown --toolchain stable
 We need to use a Canvas node with the built-in Contracts module. For this workshop we'll use the pre-designed Substrate node client.
 
 ```bash
-cargo install canvas-node --git https://github.com/paritytech/canvas-node.git --tag v0.1.3 --force
+cargo install canvas-node --git https://github.com/paritytech/canvas-node.git --tag v0.1.3 --force --locked
 ```
 
 ## ink! CLI
@@ -29,7 +29,7 @@ The final tool we will be installing is the ink! command line utility which will
 You can install the utility using Cargo with:
 
 ```bash
-cargo install cargo-contract --vers 0.7.1 --force
+cargo install cargo-contract --vers 0.7.1 --force --locked
 ```
 
 You can then use `cargo contract --help` to start exploring the commands made available to you.
