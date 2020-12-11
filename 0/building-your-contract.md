@@ -7,7 +7,7 @@ Run the following command to compile your smart contract:
 cargo +nightly contract build
 ```
 
-This special command will turn your ink! project into a Wasm binary and a metadata file (a.k.a.  the contract ABI).
+This special command will turn your ink! project into a Wasm binary and a metadata file, which contains the contract's ABI.
 These two files can be used for deploying your contract to your chain. If all goes well, you should see a `target` folder which contains this `.wasm` and `metadata.json` file.
 
 ```
