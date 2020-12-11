@@ -7,13 +7,14 @@ Run the following command to compile your smart contract:
 cargo +nightly contract build
 ```
 
-This special command will turn your ink! project into a Wasm binary and a metadata file, which contains the contract's ABI.
-These two files can be used for deploying your contract to your chain. If all goes well, you should see a `target` folder which contains this `.wasm` and `metadata.json` file.
+This special command will turn your ink! project into a Wasm binary, a metadata file (which contains the contract's ABI) and a `.contract` file which bundles both.
+This `.contract` file can be used for deploying your contract to your chain. If all goes well, you should see a `target` folder which contains these files:
 
 ```
 target
 └── flipper.wasm
 └── metadata.json
+└── flipper.contract
 ```
 
 Let's take a look at the structure of the `meatadata.json`:
