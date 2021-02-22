@@ -1,7 +1,7 @@
 
 /* PARITY STYLING -- https://www.parity.io/assets/css/theme-parity.css?v=1c871864d6 */
 :root {
-    --theme-color: #FF1864;
+    --theme-color: #F705FF;
 }
 
 /* Make the whole site have larger text*/
@@ -272,7 +272,7 @@ section.cover .cover-main > p:last-child a:last-child {
 /* Start Custom Styling for Pagination */
 
 .pagination-item-label {
-    color: #FF1864;
+    color: #F705FF;
     font-size: 2.2em !important;
     font-weight: 700;
     padding-bottom: 0.5em;
