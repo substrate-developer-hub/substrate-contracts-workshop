@@ -36,9 +36,9 @@ pub struct MyContract {
 
 impl MyContract {
     #[ink(constructor)]
-    pub fn new() -> Self {
+    pub fn new(init_value: u32) -> Self {
         Self {
-            my_number: Default::default(),
+            my_number: ink_storage::Lazy::<u32>::new(init_value),
         }
     }
 
