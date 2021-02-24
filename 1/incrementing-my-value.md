@@ -49,7 +49,7 @@ ink! HashMaps expose the well-known `entry` API that we can use to achieve this 
 let caller = self.env().caller();
 self.my_number_map
     .entry(caller)
-    .and_modify(|old_value| old_value += by)
+    .and_modify(|old_value| *old_value += by)
     .or_insert(by);
 ```
 
