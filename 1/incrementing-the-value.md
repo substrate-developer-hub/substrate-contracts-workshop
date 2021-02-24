@@ -36,7 +36,7 @@ pub struct MyContract {
 
 impl MyContract {
     #[ink(constructor)]
-    pub fn new(init_value: i32) -> Self {
+    pub fn new() -> Self {
         Self {
             my_number: Default::default(),
         }
