@@ -27,7 +27,7 @@ mod erc20 {
             let mut balances = ink_storage::collections::HashMap::new();
             balances.insert(Self::env().caller(), initial_supply);
 
-            // ACTION: Call `self.env().emit_event` with the `Transfer` event
+            // ACTION: Call `Self::env().emit_event` with the `Transfer` event
             //   HINT: Since we use `Option<AccountId>`, you need to wrap accounts in `Some()`
 
             Self {

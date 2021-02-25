@@ -16,8 +16,8 @@ mod erc20 {
     impl Erc20 {
         #[ink(constructor)]
         pub fn new(initial_supply: Balance) -> Self {
-            // ACTION: `set` the total supply to `init_value`
-            // ACTION: `insert` the `init_value` as the `caller` balance
+            // ACTION: `set` the total supply to `initial_supply`
+            // ACTION: `insert` the `initial_supply` as the `caller` balance
         }
 
         #[ink(message)]
