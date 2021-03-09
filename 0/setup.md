@@ -26,10 +26,15 @@ cargo install canvas-node --git https://github.com/paritytech/canvas-node.git --
 
 The final tool we will be installing is the ink! command line utility which will make setting up Substrate smart contract projects easier.
 
-You can install the utility using Cargo with:
+As a pre-requisite for the tool you need to install the [binaryen](https://github.com/WebAssembly/binaryen) package, which is used to optimize the WebAssembly bytecode of the contract.
+
+Many package managers have it available nowadays ‒ e.g. it's a package for [Debian/Ubuntu](https://tracker.debian.org/pkg/binaryen),
+[Homebrew](https://formulae.brew.sh/formula/binaryen) and [Arch Linux](https://archlinux.org/packages/community/x86_64/binaryen/).
+
+After you've installed the package execute:
 
 ```bash
-cargo install cargo-contract --vers 0.8.0 --force --locked
+cargo install cargo-contract --vers 0.10.0 --force --locked
 ```
 
 You can then use `cargo contract --help` to start exploring the commands made available to you.
