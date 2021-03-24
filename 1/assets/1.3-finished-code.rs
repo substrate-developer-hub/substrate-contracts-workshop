@@ -36,7 +36,7 @@ mod incrementer {
     mod tests {
         use super::*;
 
-        #[test]
+        #[ink::test]
         fn default_works() {
             let contract = Incrementer::default();
             assert_eq!(contract.get(), 0);

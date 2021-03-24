@@ -25,7 +25,7 @@ mod incrementer {
 
     #[cfg(test)]
     mod tests {
-        #[test]
+        #[ink::test]
         fn default_works() {
             // Test Your Contract
         }
