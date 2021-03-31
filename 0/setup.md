@@ -34,7 +34,7 @@ Many package managers have it available nowadays ‒ e.g. it's a package for [De
 After you've installed the package execute:
 
 ```bash
-cargo install cargo-contract --vers 0.10.0 --force --locked
+cargo install cargo-contract --vers 0.11.0 --force --locked
 ```
 
 You can then use `cargo contract --help` to start exploring the commands made available to you.
