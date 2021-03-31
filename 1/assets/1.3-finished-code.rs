@@ -35,8 +35,9 @@ mod incrementer {
     #[cfg(test)]
     mod tests {
         use super::*;
+        use ink_lang as ink;
 
-        #[test]
+        #[ink::test]
         fn default_works() {
             let contract = Incrementer::default();
             assert_eq!(contract.get(), 0);

@@ -25,7 +25,10 @@ mod incrementer {
 
     #[cfg(test)]
     mod tests {
-        #[test]
+        use super::*;
+        use ink_lang as ink;
+
+        #[ink::test]
         fn default_works() {
             // Test Your Contract
         }
