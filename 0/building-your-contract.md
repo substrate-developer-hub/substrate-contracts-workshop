@@ -17,7 +17,7 @@ target
 └── flipper.contract
 ```
 
-Let's take a look at the structure of the `meatadata.json`:
+Let's take a look at the structure of the `metadata.json`:
 
 ``` JSON
 {
