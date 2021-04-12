@@ -3,7 +3,7 @@ Introduction
 
 This chapter will get you started developing smart contracts with ink!.
 
-We will build a simple "Incrementer" contract which holds a number which you can increase with a function call.
+We will build a simple **Incrementer** contract which holds a number which you can increase with a function call.
 
 Over the course of this chapter you will learn:
 

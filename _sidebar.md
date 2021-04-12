@@ -5,8 +5,8 @@
     - [Setup](0/setup.md)
     - [Creating an ink! Project](0/creating-an-ink-project.md)
     - [Building Your Contract](0/building-your-contract.md)
-    - [Running a Substrate Node](0/running-a-substrate-node.md)
-    - [Deploying Your Contract](0/deploying-your-contract.md)
+    - [Running a Canvas Node](0/canvas-node.md)
+    - [Deploying Your Contract](0/deploy-contract.md)
     - [Calling Your Contract](0/calling-your-contract.md)
     - [Troubleshooting](0/troubleshooting.md)
 
