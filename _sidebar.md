@@ -17,12 +17,12 @@
     - [Storing a Mapping](01-basics/05-storing-a-mapping.md)
     - [Incrementing My Value](01-basics/06-incrementing-my-value.md)
 
-- [**#2 ERC20**](02-erc20/introduction.md)
-    - [Creating the ERC20 Template](02-erc20/creating-the-erc20-template.md)
-    - [Transferring Tokens](02-erc20/transferring-tokens.md)
-    - [Creating an Event](02-erc20/creating-an-event.md)
-    - [Supporting Approvals and Transfer From](02-erc20/supporting-approvals-and-transfer-from.md)
-    - [Testing our Contract](02-erc20/testing-our-contract.md)
+- [**#2 ERC20**](02-erc20/00-introduction.md)
+    - [Creating the ERC20 Template](02-erc20/01-create-erc20.md)
+    - [Transferring Tokens](02-erc20/02-transfer.md)
+    - [Creating an Event](02-erc20/03-create-event.md)
+    - [Supporting Approvals and Transfer From](02-erc20/04-approvals-transfer-from.md)
+    - [Testing our Contract](02-erc20/05-testing.md)
 
 - [Report an Issue](https://github.com/substrate-developer-hub/substrate-contracts-workshop/issues)
 - [ink! Repository](https://github.com/paritytech/ink)

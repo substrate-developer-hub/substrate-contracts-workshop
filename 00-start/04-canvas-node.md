@@ -7,7 +7,7 @@ After successfully installing `canvas`, you can start a local development chain 
 canvas --dev --tmp
 ```
 
-![Substrate Canvas node](./assets/start-canvas-node.png)
+![Substrate Canvas node](assets/start-canvas-node.png)
 
 You should start seeing blocks being produced by your node in your terminal.
 
@@ -20,4 +20,4 @@ Now config the UI to connect to the locally running node:
 - Click on the dropdown selector at bottom left corner.
 - Choose the Local Node.
 
-![Canvas Config to local node](./assets/canvas-connect-to-local.png)
+![Canvas Config to local node](assets/canvas-connect-to-local.png)
