@@ -1,10 +1,10 @@
-![substrate-ink](media/substrate-ink.png ':size=300')
+![substrate-ink](assets/images/substrate-ink.png ':size=300')
 
 # ink! Smart Contracts Tutorial
 
 > Learn to build smart contracts with Parity ink!
 
-[Get Started](0/introduction.md)
+[Get Started](00-start/00-introduction.md)
 [GitHub](https://github.com/paritytech/ink)
 
 <!-- Overwrite Background Image with black -->

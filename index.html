@@ -8,13 +8,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta charset="UTF-8">
   <!-- Theme: Simple Dark -->
-  <link rel="stylesheet" href="https://www.parity.io/assets/css/font-manifoldroboto.css?v=1c871864d6">
   <link rel="stylesheet" href="//unpkg.com/docsify/themes/dark.css">
-  <link rel="stylesheet" href="./custom/custom.css">
-  <link rel="apple-touch-icon" sizes="180x180" href="./media/favicons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./media/favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./media/favicons/favicon-16x16.png">
-  <link rel="manifest" href="./media/favicons/site.webmanifest">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
   <!-- Klaro scripts – Cookie consent manager -->
   <script defer type="text/javascript" src="https://substrate.dev/js/config.js"></script>
   <script defer type="text/javascript" src="https://substrate.dev/js/klaro.min.js"></script>
@@ -34,7 +32,7 @@
     window.$docsify = {
       repo: 'https://github.com/substrate-developer-hub/substrate-contracts-workshop',
       loadSidebar: true,
-      loadNavbar: true,
+      loadNavbar: false,
       coverpage: true,
       onlyCover: true,
       themeable: {
@@ -42,7 +40,6 @@
         responsiveTables: true  // default
       },
       auto2top: true,
-      mergeNavbar: true,
       search: {
         noData: {
           '/': 'No results!'
@@ -53,11 +50,15 @@
       },
       pagination: {
         crossChapter: true
+      },
+      alias: {
+        // https://docsify.js.org/#/more-pages?id=nested-sidebars
+        '/.*/_sidebar.md': '/_sidebar.md'
       }
     };
   </script>
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-  <script src="//unpkg.com/docsify-pagination@2.4.0/dist/docsify-pagination.min.js"></script>
+  <script src="//unpkg.com/docsify@4.12.1/lib/docsify.min.js"></script>
+  <script src="//unpkg.com/docsify-pagination@2.6.1/dist/docsify-pagination.min.js"></script>
   <script src="//unpkg.com/docsify-copy-code@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
@@ -65,8 +66,8 @@
   <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
   <!-- Custom JS for CodeView-->
   <script defer type="text/javascript" src="//unpkg.com/monaco-editor@0.15.6/min/vs/loader.js"></script>
-  <script defer src="./custom/codeview.js"></script>
-  <script src="./custom/hub.js"></script>
+  <script defer src="assets/js/codeview.js"></script>
+  <script src="assets/js/hub.js"></script>
 </body>
 
 </html>
