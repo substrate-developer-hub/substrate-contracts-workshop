@@ -20,7 +20,7 @@
 - [**#2 ERC20**](2/introduction.md)
     - [Creating the ERC20 Template](2/create-erc20.md)
     - [Transferring Tokens](2/transfer.md)
-    - [Creating an Event](2/reate-event.md)
+    - [Creating an Event](2/create-event.md)
     - [Supporting Approvals and Transfer From](2/approvals-transfer-from.md)
     - [Testing our Contract](2/testing.md)
 
