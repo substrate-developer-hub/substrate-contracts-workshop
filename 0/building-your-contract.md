@@ -1,49 +1,60 @@
 Building Your Contract
 ===
 
-Run the following command to compile your smart contract:
+Run the following command to compile your smart contract in Flipper project directory:
 
 ```bash
 cargo +nightly contract build
 ```
 
-This special command will turn your ink! project into a Wasm binary, a metadata file (which contains the contract's ABI) and a `.contract` file which bundles both.
-This `.contract` file can be used for deploying your contract to your chain. If all goes well, you should see a `target` folder which contains these files:
+This command will build for the ink! project a Wasm binary, a metadata file (which contains the
+contract's ABI) and a `.contract` file which bundles both. This `.contract` file can be used for
+deploying your contract to your chain. If all goes well, you should see a `target` folder which
+contains these files:
 
 ```
 target
-└── flipper.wasm
-└── metadata.json
-└── flipper.contract
+  └─ debug
+    └─ ...
+  └─ ink
+    └─ release
+      └─ ...
+    └─ CACHEDIR.TAG
+    └─ flipper.contract
+    └─ flipper.wasm
+    └─ metadata.json
 ```
 
 Let's take a look at the structure of the `metadata.json`:
 
 ``` JSON
 {
-  "registry": {
-    "strings": [...],
-    "types": [...]
+  "metadataVersion": "0.1.0",
+  "source": {...},
+  "contracts": {...},
+  "spec": {
+    "constructors": [...],
+    "docs": [],
+    "events": [],
+    "messages": [...],
   },
   "storage": {...},
-  "contract": {
-    "name": ...,
-    "constructors": [...],
-    "messages": [...],
-    "events": [],
-    "docs": []
-  }
+  "types": [...]
 }
 ```
 
-You can see that this file describes all the interfaces that can be used to interact with your contract.
+This file describes all the interfaces that can be used to interact with your contract.
 
-* Registry provides the **strings** and custom **types** used throughout the rest of the JSON.
-* Storage defines all the **storage** items managed by your contract and how to ultimately access them.
-* Contract stores information about the callable functions like  **constructors** and **messages** a user can call to interact with your contract. It also has helpful information like the **events** that are emitted by the contract or any **docs**.
+* `types` provides the custom **data types** used throughout the rest of the JSON.
+* `storage` defines all the **storage** items managed by your contract and how to ultimately access
+them.
+* `spec` stores information about the callable functions like **constructors** and **messages** a
+user can call to interact with the contract. It also has helpful information like the **events**
+that are emitted by the contract or any **docs**.
 
-If you look close at the constructors and messages, you will also notice a `selector` which is a 4-byte hash of the function name and is used to route your contract calls to the correct functions.
+If you look closely at the constructors and messages, you will also notice a `selector` which
+contains a 4-byte hash of the function name and is used to route your contract calls to the correct
+functions.
 
-The Canvas UI uses this file to generate a friendly interface for deploying and interacting with your contract. :)
-
-In the next section we will start a Canvas node and configure the Canvas UI to interact with it.
+In the next section we will start a [Substrate Canvas node](https://github.com/paritytech/canvas-node)
+and configure the [Canvas UI](https://github.com/paritytech/canvas-ui) to interact with it.

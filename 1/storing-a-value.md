@@ -3,7 +3,7 @@ Storing a Value
 
 The first thing we are going to do to the contract template is introduce some storage values.
 
-Here is how you would store some simple values in storage:
+Here is how you would store simple values in storage:
 
 ```rust
 #[ink(storage)]
@@ -18,9 +18,12 @@ pub struct MyContract {
 
 ## Supported Types
 
-Contract may store types that are encodable and decodable with [Parity Codec](https://github.com/paritytech/parity-codec) which includes the most common types such as `bool`, `u{8,16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuples, and arrays.
+Substrate Contract may store types that are encodable and decodable with
+[Parity Codec](https://github.com/paritytech/parity-codec) which includes most Rust common data
+types such as `bool`, `u{8,16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuples, and arrays.
 
-ink! provides smart contracts Substrate specific types like `AccountId`, `Balance`, and `Hash` as if they were primitive types. Also ink! provides storage types for more elaborate storage interactions through the storage module:
+ink! provides smart contracts Substrate specific types like `AccountId`, `Balance`, and `Hash` as if
+they were primitive types. ink! also provides storage types for more elaborate storage interactions through the storage module:
 
 ```rust
 use ink_storage::collections::{Vec, HashMap, Stash, Bitvec};
@@ -47,11 +50,12 @@ mod MyContract {
 }
 ```
 
-You can find all the supported Substrate types in [`crates/storage/src/lib.rs`](https://github.com/paritytech/ink/blob/master/crates/storage/src/lib.rs).
+You can find all the supported Substrate types in [`ink_storage` crate](https://github.com/paritytech/ink/tree/master/crates/storage).
 
 ## Contract Deployment
 
-Every ink! smart contract must have a constructor which is run once when a contract is created. ink! smart contracts can have multiple constructors:
+Every ink! smart contract must have a constructor which is run once when a contract is created. ink!
+smart contracts can have multiple constructors:
 
 ```rust
 use ink_lang as ink;
@@ -87,7 +91,7 @@ mod mycontract {
 }
 ```
 
-## Your Turn!
+## Your Turn
 
 Follow the `ACTION`s in the template.
 
