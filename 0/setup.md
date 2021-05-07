@@ -7,11 +7,12 @@ To follow this tutorial, you will need to set up some stuff on your computer.
 
 Follow the
 [official installation steps](https://substrate.dev/docs/en/knowledgebase/getting-started/) from the
-Substrate Developer Hub Knowledge Base.
+Substrate Developer Hub Knowledge Base to install the prerequisites.
 
+Once you have done the above you will also need to run:
 ```
 rustup component add rust-src --toolchain nightly
-rustup target add wasm32-unknown-unknown --toolchain stable
+rustup target add wasm32-unknown-unknown --toolchain nightly
 ```
 
 ## Installing The Canvas Node
