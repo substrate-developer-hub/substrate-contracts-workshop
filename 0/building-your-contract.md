@@ -31,7 +31,7 @@ Let's take a look at the structure of the `metadata.json`:
 {
   "metadataVersion": "0.1.0",
   "source": {...},
-  "contracts": {...},
+  "contract": {...},
   "spec": {
     "constructors": [...],
     "docs": [],
