@@ -30,7 +30,7 @@ As a prerequisite for the tool you need to install the **binaryen** package, whi
 
 Many package managers have it available nowadays ‒ e.g. there is a package for [Debian/Ubuntu](https://tracker.debian.org/pkg/binaryen),
 [Homebrew](https://formulae.brew.sh/formula/binaryen) and [Arch Linux](https://archlinux.org/packages/community/x86_64/binaryen/).
-If there is no proper package you can [download the source code from github](https://github.com/WebAssembly/binaryen) and compile for the binary.
+If there is no proper package you can [download a binary release directly](https://github.com/WebAssembly/binaryen/releases).
 
 After you've installed the package execute:
 
