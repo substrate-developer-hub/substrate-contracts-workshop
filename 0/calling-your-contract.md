@@ -28,7 +28,7 @@ which will _simulate_ a transaction, but not actually storing anything on-chain.
 
 So let's make the value turn `true` now!
 
-The alternative message to send we can make with the UI is `flip()`. Again, accept the default values for the other options.
+The alternative message to send with the UI is `flip()`. Again, accept the default values for the other options.
 
 You will notice that the `flip()` message defaults to a transaction call.
 

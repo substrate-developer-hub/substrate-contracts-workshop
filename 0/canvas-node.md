@@ -15,7 +15,7 @@ You can interact with your node using the hosted version of Canvas UI at:
 
 https://paritytech.github.io/canvas-ui
 
-Now config the UI to connect to the locally running node:
+Now configure the UI to connect to the locally running node:
 
 - Click on the dropdown selector at bottom left corner.
 - Choose the Local Node.
