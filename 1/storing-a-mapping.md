@@ -147,7 +147,7 @@ As you might have noticed in the example above, we use a special function called
 
 > **NOTE:** The contract caller is not the same as the origin caller. If a user triggers a contract which then calls a subsequent contract, the `self.env().caller()` in the second contract will be the address of the first contract, not the original user.
 
-`self.env().caller()` can be used a number of different ways. In the example above, we are basically creating an "access control" layer which only allows users to access their own values. You can also save the contract owner during contract deployment for future references:
+`self.env().caller()` can be used in a number of different ways. In the example above, we are basically creating an "access control" layer which only allows users to access their own values. You can also save the contract owner during contract deployment for future references:
 
 ```rust
 

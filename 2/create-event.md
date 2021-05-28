@@ -29,7 +29,7 @@ Option-wrapped `AccountId` variables indicating the `from` and `to` accounts. Fo
 the event data they can have _indexed fields_. We can do this by using the `#[ink(topic)]` attribute
 tag on that field.
 
-One way of retrieving data from an Option<T> variable is using the `.unwrap_or()` function.  You may
+One way of retrieving data from an `Option<T>` variable is using the `.unwrap_or()` function.  You may
 recall using this in the `my_value_or_zero()` and `balance_of_or_zero()` functions in this project
 and the Incrementer project.
 
@@ -39,7 +39,7 @@ Now that we have defined what data will be contained within the event and how to
 time to actually emit some events. We do this by calling `self.env().emit_event()` and include an
 event as the sole argument to the method call.
 
-Remember that since the `from` and `to` fields are Option<AccountId>, we can't just set them to
+Remember that since the `from` and `to` fields are `Option<AccountId>`, we can't just set them to
 particular values. Let's assume we want to set an value of 100 for the initial deployer.  This value
 does not come from any other account, and so the `from` value should be `None`.
 
@@ -55,7 +55,7 @@ self.env()
 
 > Note: `value` does not need a `Some()`, as the value is not stored in an `Option`.
 
-We want to emit a Transfer event every time that a transfer takes place.  In the ERC-20 template
+We want to emit a `Transfer` event every time that a transfer takes place. In the ERC-20 template
 that we have been working on, this occurs in two places: first, during the `new` call, and second,
 every time that `transfer_from_to` is called.
 

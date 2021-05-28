@@ -45,7 +45,7 @@ sure we are working with a real value.
 ## Update or Insert (Upsert)
 
 We will not always have an existing value on our contract's storage. We can take advantage of the
-Rust `Option<T>` type to help use on this task.
+Rust `Option<T>` type to help us.
 If there's no value on the contract storage we will insert a new one; on the contrary if there is
 an existing value we will only update it.
 

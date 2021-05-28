@@ -18,11 +18,11 @@ pub struct MyContract {
 
 ## Supported Types
 
-Substrate Contract may store types that are encodable and decodable with
+Substrate contracts may store types that are encodable and decodable with
 [Parity Codec](https://github.com/paritytech/parity-codec) which includes most Rust common data
 types such as `bool`, `u{8,16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuples, and arrays.
 
-ink! provides smart contracts Substrate specific types like `AccountId`, `Balance`, and `Hash` as if
+ink! provides Substrate specific types like `AccountId`, `Balance`, and `Hash` to smart contracts as if
 they were primitive types. ink! also provides storage types for more elaborate storage interactions through the storage module:
 
 ```rust
@@ -50,7 +50,7 @@ mod MyContract {
 }
 ```
 
-You can find all the supported Substrate types in [`ink_storage` crate](https://github.com/paritytech/ink/tree/master/crates/storage).
+You can find all the supported Substrate types in the [`ink_storage` crate](https://github.com/paritytech/ink/tree/master/crates/storage).
 
 ## Contract Deployment
 
