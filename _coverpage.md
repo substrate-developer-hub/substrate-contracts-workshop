@@ -1,4 +1,4 @@
-![substrate-ink](assets/images/substrate-ink.png ':size=300')
+![substrate-ink](./assets/images/substrate-ink.png ':size=300')
 
 # ink! Smart Contracts Tutorial
 
