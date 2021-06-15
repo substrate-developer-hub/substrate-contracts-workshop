@@ -93,7 +93,7 @@ using ink! in Substrate.
 ## Next Step
 
 - Learn more about smart contract development at:
-https://substrate.dev/docs/en/knowledgebase/smart-contracts/overview
+https://substrate.dev/docs/en/knowledgebase/smart-contracts/
 
 <!-- tabs:start -->
 
