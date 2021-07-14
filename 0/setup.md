@@ -20,7 +20,7 @@ rustup target add wasm32-unknown-unknown --toolchain nightly
 We need to use a Canvas node with the built-in Contracts module. For this workshop we'll use the pre-designed Substrate node client.
 
 ```bash
-cargo install canvas-node --git https://github.com/paritytech/canvas-node.git --tag v0.1.8 --force --locked
+cargo install canvas-node --git https://github.com/paritytech/canvas-node.git --tag v0.1.9 --force --locked
 ```
 
 ## ink! CLI
