@@ -33,6 +33,12 @@ Many package managers have it available nowadays ‒ e.g. there is a package for
 [Homebrew](https://formulae.brew.sh/formula/binaryen) and [Arch Linux](https://archlinux.org/packages/community/x86_64/binaryen/).
 If there is no proper package you can [download a binary release directly](https://github.com/WebAssembly/binaryen/releases).
 
+If you are using Ubuntu or Debian, you could install it directly: 
+
+```bash
+sudo apt install binaryen
+```
+
 After you've installed the package execute:
 
 ```bash
