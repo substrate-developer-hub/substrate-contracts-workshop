@@ -42,7 +42,7 @@ sudo apt install binaryen
 After you've installed the package execute:
 
 ```bash
-cargo install cargo-contract --vers ^0.12 --force --locked
+cargo install cargo-contract --vers ^0.13 --force --locked
 ```
 
 You can then use `cargo contract --help` to start exploring the commands made available to you.
