@@ -39,6 +39,12 @@ If you are using Ubuntu or Debian, you could install it directly:
 sudo apt install binaryen
 ```
 
+Or use npm to install it:
+
+```bash
+npm install binaryen
+```
+
 After you've installed the package execute:
 
 ```bash
