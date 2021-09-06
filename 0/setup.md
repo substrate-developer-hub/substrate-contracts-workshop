@@ -17,7 +17,7 @@ rustup target add wasm32-unknown-unknown --toolchain nightly
 
 ## Installing The Substrate Contracts Node
 
-We need to use a Substrate node with the built-in Contracts module. For this workshop we'll use a pre-configured Substrate node client.
+We need to use a Substrate node with the built-in `pallet-contracts` module. For this workshop we'll use a pre-configured Substrate node client.
 
 ```bash
 cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git --tag v0.1.0 --force --locked
