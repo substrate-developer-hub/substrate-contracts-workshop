@@ -5,7 +5,7 @@ After successfully installing [`substrate-contracts-node`](https://github.com/pa
 you can start a local development chain by running:
 
 ```bash
-contracts-node --dev --tmp
+substrate-contracts-node --dev --tmp
 ```
 
 ![Substrate Smart Contracts Node](assets/start-canvas-node.png)

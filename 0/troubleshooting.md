@@ -13,7 +13,7 @@ the following error:
 ClientImport("Unexpected epoch change")
 ```
 
-To solve this you will need to restart your node with: `contracts-node --dev --tmp`. At that point, you will
+To solve this you will need to restart your node with: `substrate-contracts-node --dev --tmp`. At that point, you will
 need to re-deploy any contracts and re-do any steps that you may have done before on your node. As
 long as you keep your node running, you should face no issues.
 
