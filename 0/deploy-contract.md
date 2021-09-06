@@ -1,7 +1,7 @@
 Deploying Your Contract
 ===
 
-Now that we have generated the Wasm binary from our source code and started a Canvas node, we want
+Now that we have generated the Wasm binary from our source code and started a `substrate-contracts-node`, we want
 to deploy this contract onto our Substrate blockchain.
 
 Smart contract deployment on Substrate is a little different than on traditional smart contract
