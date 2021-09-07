@@ -15,12 +15,12 @@ rustup component add rust-src --toolchain nightly
 rustup target add wasm32-unknown-unknown --toolchain nightly
 ```
 
-## Installing The Canvas Node
+## Installing The Substrate Contracts Node
 
-We need to use a Canvas node with the built-in Contracts module. For this workshop we'll use the pre-designed Substrate node client.
+We need to use a Substrate node with the built-in `pallet-contracts` module. For this workshop we'll use a pre-configured Substrate node client.
 
 ```bash
-cargo install canvas-node --git https://github.com/paritytech/canvas-node.git --tag v0.1.9 --force --locked
+cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git --tag v0.1.0 --force --locked
 ```
 
 ## ink! CLI
@@ -33,7 +33,7 @@ Many package managers have it available nowadays ‒ e.g. there is a package for
 [Homebrew](https://formulae.brew.sh/formula/binaryen) and [Arch Linux](https://archlinux.org/packages/community/x86_64/binaryen/).
 If there is no proper package you can [download a binary release directly](https://github.com/WebAssembly/binaryen/releases).
 
-If you are using Ubuntu or Debian, you could install it directly: 
+If you are using Ubuntu or Debian, you could install it directly:
 
 ```bash
 sudo apt install binaryen
@@ -42,7 +42,7 @@ sudo apt install binaryen
 After you've installed the package execute:
 
 ```bash
-cargo install cargo-contract --vers ^0.13 --force --locked
+cargo install cargo-contract --vers ^0.14 --force --locked
 ```
 
 You can then use `cargo contract --help` to start exploring the commands made available to you.

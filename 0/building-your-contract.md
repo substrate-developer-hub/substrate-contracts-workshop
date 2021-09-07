@@ -56,5 +56,5 @@ If you look closely at the constructors and messages, you will also notice a `se
 contains a 4-byte hash of the function name and is used to route your contract calls to the correct
 functions.
 
-In the next section we will start a [Substrate Canvas node](https://github.com/paritytech/canvas-node)
+In the next section we will start a [Substrate Smart Contracts node](https://github.com/paritytech/substrate-contracts-node)
 and configure the [Canvas UI](https://github.com/paritytech/canvas-ui) to interact with it.
