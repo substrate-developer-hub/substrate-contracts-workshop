@@ -43,7 +43,7 @@ Woohoo! You deployed your first smart contract!
 ## Moving Forward
 
 We will not go over these setup and deployment steps again, but you can use them throughout the
-tutorial to deploy certain contract on-chain.
+tutorial to deploy certain contracts on-chain.
 
 The rest of the tutorial will have **template code** which you will use to walk through the
 different steps of contract development. Each template comes with a fully designed suite of tests
