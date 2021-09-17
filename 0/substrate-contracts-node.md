@@ -8,7 +8,7 @@ you can start a local development chain by running:
 substrate-contracts-node --dev --tmp
 ```
 
-![Substrate Smart Contracts Node](assets/start-canvas-node.png)
+![Substrate Smart Contracts Node](assets/start-node.png)
 
 You should start seeing blocks being produced by your node in your terminal.
 
