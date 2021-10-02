@@ -44,10 +44,12 @@ mod erc20 {
 				to: Some(caller),
 				value: initial_supply,
 			});
-
+			
+			// ACTION: add allowances initialization
 			Self {
 				total_supply: initial_supply,
-				balances
+				balances,
+				
 			}
 		}
 
