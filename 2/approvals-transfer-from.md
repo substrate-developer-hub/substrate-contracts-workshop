@@ -5,7 +5,7 @@ We are almost there! Our token contract can now transfer funds from user to user
 outside world what is going on when this happens. All that is left to do is introduce the `approve`
 and `transfer_from` functions.
 
-## Third Parity Transfers
+## Third Party Transfers
 
 This section is all about adding the ability for other accounts to safely spend some amount of your
 tokens.
